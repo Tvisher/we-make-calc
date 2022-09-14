@@ -39,7 +39,7 @@ function resetSelect(e) {
     // Если есть поле вода, обнулить
     const numField = parentLabel.querySelector('.styles-label input[data-styles-field]');
     if (numField) numField.value = '';
-
+    // Обнулить поля кастомного решения
     if (parentLabel.classList.contains('solution')) {
         parentLabel.querySelectorAll('input, textarea').forEach(item => item.value = '');
     }

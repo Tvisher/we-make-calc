@@ -1936,6 +1936,7 @@ li {
   background-color: #17171a;
   top: 0px;
   color: rgb(216, 216, 216);
+  font-size: 14px;
 }
 
 [data-styles-field]:not(:placeholder-shown) {
@@ -2368,6 +2369,7 @@ input[type=number]:focus {
 .solution .area-field textarea:focus ~ .styles-text {
   background: #17171a;
   top: -8px;
+  font-size: 14px;
   color: rgb(216, 216, 216);
 }
 
