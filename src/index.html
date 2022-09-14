@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeMake - Расчет стоимости интернет-магазина</title>
+    <link rel="stylesheet" href="./css/main.min.css">
+    <script> </script>
+</head>
+
+<body>
+    <header> </header>
+
+    <main>
+        <section class="calc no-print">
+            <div class="calc__frame"></div>
+            <div class="calc__content">
+                <div class="container">
+                    <div class="calc__wrapper">
+                        <div class="calc__inner-data">
+                            <h1 class="calc__title">Расчет стоимости интернет-магазина</h1>
+
+                            <label class="styles-input">
+                                <input type="text" data-styles-field id="" placeholder=" ">
+                                <span class="styles-text">Название компании</span>
+                            </label>
+
+                            <label class="styles-input">
+                                <input type="text" data-styles-field id="" placeholder=" ">
+                                <span class="styles-text">Специализация компании</span>
+                            </label>
+
+                            <label class="styles-input">
+                                <input type="text" data-styles-field id="" placeholder=" ">
+                                <span class="styles-text">Город</span>
+                            </label>
+
+                            <label class="styles-input">
+                                <input type="text" data-styles-field id="" placeholder=" ">
+                                <span class="styles-text">Доменное имя интернет-магазина</span>
+                            </label>
+
+
+                            <h2 class="services-title">Услуги</h2>
+                            <label class="styles-label">
+                                <span class="select-placeholder">Домен на 1 год</span>
+                                <select id="">
+                                    <option value=""></option>
+                                    <option value="1">Да</option>
+                                    <!-- <option value="2">Нет</option> -->
+                                </select>
+                                <input type="hidden" value="" id="">
+                                <button class="reset-select"></button>
+                                <label class="togler">
+                                    <input type="checkbox" id="">
+                                    <div class="togler__text "></div>
+                                </label>
+                            </label>
+
+                            <label class="styles-label">
+                                <span class="select-placeholder">Хостинг на 1 год</span>
+                                <select id="">
+                                    <option value=""></option>
+                                    <option value="1">Да</option>
+                                    <!-- <option value="2">Нет</option> -->
+                                </select>
+                                <input type="hidden" value="" id="">
+                                <button class="reset-select"></button>
+                                <label class="togler">
+                                    <input type="checkbox" id="">
+                                    <div class="togler__text "></div>
+                                </label>
+                            </label>
+
+                            <label class="styles-label">
+                                <span class="select-placeholder">Готовое решение</span>
+                                <select id="">
+                                    <option value=""></option>
+                                    <option value="1">Аспро: Маркет</option>
+                                    <option value="2">Аспро: Оптимус</option>
+                                    <option value="3">Аспро: Next</option>
+                                    <option value="4">Аспро: Максимум</option>
+                                    <option value="5">Аспро: Лайтшоп</option>
+                                    <option value="6">INTEC.Universe</option>
+                                    <option value="7">INTEC.Garderob</option>
+                                    <option value="8">INTEC.Food</option>
+                                    <option value="9">INTEC.Universe Lite</option>
+                                    <option value="10">INTEC.UNIBox</option>
+                                    <option value="11">IINTEC.Universe Site</option>
+                                    <option value="12">Концепт: Кракен</option>
+                                    <option value="13">Концепт: Феникс</option>
+                                    <option value="14">Концепт: Хамелеон</option>
+                                </select>
+                                <input type="hidden" value="" id="">
+                                <button class="reset-select"></button>
+                                <label class="togler hide">
+                                    <input type="checkbox" id="">
+                                    <div class="togler__text "></div>
+                                </label>
+                            </label>
+
+                            <label class="styles-label">
+                                <span class="select-placeholder">Лицензия 1С-Битрикс</span>
+                                <select id="">
+                                    <option value=""></option>
+                                    <option value="1">1С-Битрикс «Старт»</option>
+                                    <option value="2">1С-Битрикс «Стандарт»</option>
+                                    <option value="3">1C-Битрикс «Малый Бизнес»</option>
+                                    <option value="4">1C-Битрикс «Бизнес»</option>
+                                </select>
+                                <input type="hidden" value="" id="">
+                                <button class="reset-select"></button>
+                                <label class="togler hide">
+                                    <input type="checkbox" id="">
+                                    <div class="togler__text "></div>
+                                </label>
+                            </label>
+
+                            <label class="styles-label">
+                                <span class="select-placeholder">Тип внедрения</span>
+                                <select id="">
+                                    <option value=""></option>
+                                    <option value="1">Только установка</option>
+                                    <option value="2">Установка и обучение</option>
+                                    <option value="3">Внедрение «Под ключ»</option>
+                                </select>
+                                <input type="hidden" value="" id="">
+                                <button class="reset-select"></button>
+                                <label class="togler hide">
+                                    <input type="checkbox" id="">
+                                    <div class="togler__text "></div>
+                                </label>
+                            </label>
+
+                            <label class="styles-label">
+                                <span class="select-placeholder">Синхронизация с Google Excel</span>
+                                <select id="">
+                                    <option value=""></option>
+                                    <option value="1">Ручной запуск</option>
+                                    <option value="2">Автоматически по времени</option>
+                                </select>
+                                <input type="hidden" value="" id="">
+                                <button class="reset-select"></button>
+                                <label class="togler">
+                                    <input type="checkbox" id="">
+                                    <div class="togler__text "></div>
+                                </label>
+                            </label>
+
+                            <label class="styles-label">
+                                <span class="select-placeholder">Синхронизация с 1С</span>
+                                <select id="">
+                                    <option value=""></option>
+                                    <option value="1">Полная синхронизация</option>
+                                    <option value="2">Только остатки и цены</option>
+                                </select>
+                                <input type="hidden" value="" id="">
+                                <button class="reset-select"></button>
+                                <label class="togler">
+                                    <input type="checkbox" id="">
+                                    <div class="togler__text "></div>
+                                </label>
+                            </label>
+
+                            <label class="styles-label">
+                                <span class="select-placeholder">Сбор информации по товарам</span>
+                                <select id="">
+                                    <option value=""></option>
+                                    <option value="1">Изображение + описание + характеристики (до 5ти)</option>
+                                    <option value="2">Только изображение и описание (не уникальное)</option>
+                                </select>
+                                <input type="hidden" value="" id="">
+                                <label class="styles-input">
+                                    <input type="text" data-styles-field id="" placeholder=" ">
+                                    <span class="styles-text">Кол-во</span>
+                                </label>
+                                <button class="reset-select"></button>
+                                <label class="togler">
+                                    <input type="checkbox" id="">
+                                    <div class="togler__text "></div>
+                                </label>
+                            </label>
+
+                            <label class="styles-label">
+                                <span class="select-placeholder">Уникальные текста на категории</span>
+                                <select id="">
+                                    <option value=""></option>
+                                    <option value="1">400 - 500 символов</option>
+                                    <option value="2">900 - 1 000 символов</option>
+                                    <option value="3">1 000 - 2 000 символов</option>
+                                </select>
+                                <input type="hidden" value="" id="">
+                                <label class="styles-input">
+                                    <input type="text" data-styles-field id="" placeholder=" ">
+                                    <span class="styles-text">Кол-во</span>
+                                </label>
+                                <button class="reset-select"></button>
+                                <label class="togler">
+                                    <input type="checkbox" id="">
+                                    <div class="togler__text "></div>
+                                </label>
+                            </label>
+
+                            <label class="styles-label">
+                                <span class="select-placeholder">Уникальные текста на товары</span>
+                                <select id="">
+                                    <option value=""></option>
+                                    <option value="1">400 - 500 символов</option>
+                                    <option value="2">900 - 1 000 символов</option>
+                                    <option value="3">1 000 - 2 000 символов</option>
+                                </select>
+                                <input type="hidden" value="" id="">
+                                <label class="styles-input">
+                                    <input type="text" data-styles-field id="" placeholder=" ">
+                                    <span class="styles-text">Кол-во</span>
+                                </label>
+                                <button class="reset-select"></button>
+                                <label class="togler">
+                                    <input type="checkbox" id="">
+                                    <div class="togler__text "></div>
+                                </label>
+                            </label>
+
+                            <label class="styles-label">
+                                <span class="select-placeholder">Установка счетчиков статистики</span>
+                                <select id="">
+                                    <option value=""></option>
+                                    <option value="1">Яндекс</option>
+                                    <option value="2">Google</option>
+                                    <option value="3">Яндекс и Google</option>
+                                </select>
+                                <input type="hidden" value="" id="">
+                                <button class="reset-select"></button>
+                                <label class="togler">
+                                    <input type="checkbox" id="">
+                                    <div class="togler__text "></div>
+                                </label>
+                            </label>
+
+                            <label class="styles-label">
+                                <span class="select-placeholder">SEO оптимизация проекта</span>
+                                <select id="">
+                                    <option value=""></option>
+                                    <option value="1">Только регистрация в Web-мастерах</option>
+                                    <option value="2">Полная оптимизация</option>
+                                </select>
+                                <input type="hidden" value="" id="">
+                                <button class="reset-select"></button>
+                                <label class="togler">
+                                    <input type="checkbox" id="">
+                                    <div class="togler__text "></div>
+                                </label>
+                            </label>
+
+                            <label class="styles-label">
+                                <span class="select-placeholder">Доменная почта</span>
+                                <select id="">
+                                    <option value=""></option>
+                                    <option value="1">Нужна</option>
+                                </select>
+                                <input type="hidden" value="" id="">
+                                <button class="reset-select"></button>
+                                <label class="togler">
+                                    <input type="checkbox" id="">
+                                    <div class="togler__text "></div>
+                                </label>
+                            </label>
+
+                            <label class="styles-label">
+                                <span class="select-placeholder">Контекстная реклама</span>
+                                <select id="">
+                                    <option value=""></option>
+                                    <option value="1">Яндекс Директ</option>
+                                    <option value="2">Google Поиск</option>
+                                    <option value="3">Google Поиск + Яндекс Директ</option>
+                                </select>
+                                <input type="hidden" value="" id="">
+                                <button class="reset-select"></button>
+                                <label class="togler">
+                                    <input type="checkbox" id="">
+                                    <div class="togler__text "></div>
+                                </label>
+                            </label>
+
+                            <div class="solution">
+                                <div class="wrap">
+                                    <span class="solution-title">Нестандартное решение</span>
+                                    <button class="reset-select"></button>
+                                    <label class="togler">
+                                        <input type="checkbox" id="">
+                                        <div class="togler__text "></div>
+                                    </label>
+                                </div>
+                                <div class="area-field">
+                                    <textarea placeholder=" " id="solutionArea"></textarea>
+                                    <span class="styles-text">Описание решения</span>
+                                </div>
+                                <div class="solution__footer">
+                                    <label class="styles-input">
+                                        <input type="text" data-styles-field placeholder=" " id="solutionPrice">
+                                        <span class="styles-text">Стоимость</span>
+                                    </label>
+                                    <button class="btn">Добавить в смету</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer> </footer>
+</body>
+<script src="./js/app.min.js"></script>
+
+</html>

@@ -1,0 +1,33 @@
+// Size
+$mainFontSize: 16px;
+$mainFontWeight: 300;
+$mainLineHeight: 140%;
+
+$desktopWidth: 1720px;
+$smDesktopWidth: 980px;
+$tableWidth: 768px;
+$phoneWidth: 480px;
+$smPhoneWidth: 380px;
+
+// Main color
+$brand-black: #343a45;
+$brand-primary: #0463f1;
+$brand-gray: #59677e;
+$brand-white: #ffffff;
+$brand-green: rgba(66, 200, 66, 1);
+
+// Font
+$mainFont: "Montserrat";
+$mainFontColor: $brand-white;
+
+@mixin pruning($c) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: $c;
+  -webkit-box-orient: vertical;
+  line-clamp: $c;
+  box-orient: vertical;
+}
