@@ -51,32 +51,46 @@ $('.styles-label select').on('select2:select', function (e) {
     const selectedOptionId = selectedOption.getAttribute('data-select2-id');
     selectedOption.dataset.id = selectedOptionId;
 
+    const compliteCount = e.target.parentElement.querySelector('.complite-count');
+    if (compliteCount) {
+        compliteCount.classList.remove('show');
+    }
+
+    const isSelectWidthCounter = e.target.hasAttribute('data-has-counter');
+    let serviseValue = e.target.parentElement.querySelector('.styles-input input')?.value.trim();
+
+    if (isSelectWidthCounter && serviseValue.length < 1) {
+        return;
+    }
+    const optionCount = serviseValue ? serviseValue : null;
     addSelectedService({
         selectedOption,
         selectTargetId,
         selectName,
-        isPresent
+        isPresent,
+        optionCount
     });
 });
 
 
 function addSelectedService(dataObj) {
-    const { selectedOption, selectTargetId, selectName, isPresent } = dataObj;
+    const { selectedOption, selectTargetId, selectName, isPresent, optionCount } = dataObj;
+    const optionPrice = !optionCount ? selectedOption.value : selectedOption.value * optionCount;
+
     const service = {
         selectName,
         selectTargetId,
         optionId: selectedOption.dataset.id,
-        optionPrice: selectedOption.value,
+        optionPrice,
         optionTitle: selectedOption.dataset.title,
         optionDescription: selectedOption.dataset.description,
         exampleLink: selectedOption.dataset.exampleLink,
         isPresent,
-        optionCount: null,
+        optionCount,
     }
     estimateData = estimateData.filter(item => item.selectTargetId !== service.selectTargetId);
     estimateData.push(service);
     renderPreview(estimateData);
-    console.log(service);
 }
 
 
@@ -100,7 +114,6 @@ function resetSelect(e) {
     if (parentLabel.classList.contains('solution')) {
         parentLabel.querySelectorAll('input, textarea').forEach(item => item.value = '');
     }
-
     renderPreview(estimateData);
 }
 
@@ -182,7 +195,17 @@ function renderPreview(serveseList) {
 document.addEventListener('click', (e) => {
     resetSelect(e);
     toggleDescr(e);
+    compliteCounterChanges(e);
 });
+
+
+function compliteCounterChanges(e) {
+    const target = e.target;
+    if (!target.closest('.complite-count')) return;
+    const thisFieldSelect = e.target.closest('.styles-label').querySelector('select');
+    console.log(thisFieldSelect);
+}
+
 
 function toggleDescr(e) {
     const target = e.target;
@@ -192,7 +215,6 @@ function toggleDescr(e) {
     const toggleContent = parentElem.querySelector('.list-item__footer');
     $(toggleContent).slideToggle("slow");
 }
-
 
 document.querySelectorAll('.togler input[type="checkbox"]').forEach(item => {
     item.addEventListener('change', (e) => {
@@ -207,4 +229,20 @@ document.querySelectorAll('.togler input[type="checkbox"]').forEach(item => {
         });
         renderPreview(estimateData);
     });
-})
+});
+
+const counterFields = document.querySelectorAll('[data-counter-field]');
+counterFields.forEach(field => {
+    field.addEventListener('input', (e) => {
+        const inputValue = e.target.value.trim();
+        const compliteBtn = e.target.parentElement.querySelector('.complite-count');
+        const thisFieldSelect = e.target.closest('.styles-label').querySelector('select');
+        const thisFieldSelectValue = thisFieldSelect.value;
+
+        if (inputValue.length > 0 && thisFieldSelectValue) {
+            compliteBtn.classList.add('show');
+        } else {
+            compliteBtn.classList.remove('show');
+        }
+    });
+});

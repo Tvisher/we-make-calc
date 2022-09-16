@@ -2442,6 +2442,29 @@ input[type=number]:focus {
   display: none;
 }
 
+.complite-count {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  width: 65px;
+  height: 25px;
+  background-color: #0463f1;
+  border-radius: 20px;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='16' height='12' viewBox='0 0 16 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.16613 11.7753C4.71195 11.7754 4.27638 11.5949 3.9555 11.2735L0.295374 7.61474C-0.098458 7.22078 -0.098458 6.58218 0.295374 6.18822C0.689332 5.79439 1.32794 5.79439 1.72189 6.18822L5.16613 9.63245L14.2781 0.520471C14.6721 0.12664 15.3107 0.12664 15.7046 0.520471C16.0985 0.914429 16.0985 1.55303 15.7046 1.94699L6.37675 11.2735C6.05587 11.5949 5.6203 11.7754 5.16613 11.7753Z' fill='white'/%3e%3c/svg%3e ");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.complite-count.show {
+  opacity: 1;
+  visibility: visible;
+}
+
 @media screen and (max-width: 768px) {
   .container {
     max-width: 98%;
