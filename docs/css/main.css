@@ -1809,6 +1809,7 @@ li {
 }
 
 .calc__outer-data {
+  height: calc(100vh - 30px);
   position: sticky;
   top: 0;
   transition: opacity 0.2s ease-in-out;
@@ -2216,13 +2217,16 @@ input[type=number]:focus {
   font-weight: 400;
   font-size: 12px;
   line-height: 115%;
+  margin-bottom: 5px;
 }
 
 .result-list .list-item__data {
   font-weight: 500;
   font-size: 16px;
   color: #ffffff;
+  line-height: 140%;
   gap: 5px;
+  align-items: flex-end;
 }
 
 .result-list .list-item__footer {
@@ -2320,8 +2324,9 @@ input[type=number]:focus {
 }
 
 .styles-label .styles-input {
+  margin-left: auto;
   margin-bottom: 0;
-  max-width: 130px;
+  max-width: 19%;
   flex-shrink: 0;
 }
 
@@ -2449,6 +2454,7 @@ input[type=number]:focus {
 }
 
 .list-item[data-present=true] [data-is-present]:after {
+  margin-top: -2px;
   content: "";
   display: block;
   width: 16px;
@@ -2481,6 +2487,46 @@ input[type=number]:focus {
   opacity: 1;
   visibility: visible;
   transform: translate(-50%, 50%) scale3d(1, 1, 1);
+}
+
+.field-price,
+.field-sale,
+.field-total-price {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.field-price span,
+.field-sale span,
+.field-total-price span {
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #0463f1;
+}
+
+.field-total-price {
+  font-size: 30px;
+}
+
+.calc-result {
+  margin-top: auto;
+  margin-bottom: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease-in-out;
+}
+
+.calc-result.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.has-counter .select2 {
+  max-width: 60%;
 }
 
 @media screen and (max-width: 768px) {

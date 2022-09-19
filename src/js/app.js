@@ -1,11 +1,23 @@
 'use strict';
 import * as baseFunction from './modules/functions.js';
 import './vendors/vendors.js';
+import IMask from 'imask';
 import callPrint from './print.js';
 baseFunction.testWebP();
 
 
+IMask(document.getElementById('solutionPrice'), {
+    mask: Number,
+    thousandsSeparator: ' '
+});
+
+
 $('body').addClass('load');
+
+const culcResultArea = document.querySelector('.calc-result');
+const dataFieldPrice = document.querySelector('[data-field-price]');
+const dataFieldSale = document.querySelector('[data-field-sale]');
+const dataFieldTotalPrice = document.querySelector('[data-field-total-price]');
 
 // Массив с данными по выбраным услугам
 var estimateData = [];
@@ -144,7 +156,8 @@ function resetSelect(e) {
     if (numField) numField.value = '';
     // Обнулить поля кастомного решения
     if (parentLabel.classList.contains('solution')) {
-        parentLabel.querySelectorAll('input, textarea').forEach(item => item.value = '');
+        // parentLabel.querySelectorAll('input, textarea').forEach(item => item.value = '');
+        estimateData = estimateData.filter(item => item.selectTargetId !== 'solutionArea');
     }
     renderPreview(estimateData);
 }
@@ -158,19 +171,20 @@ solutionFields.forEach(item => {
         parentElem.classList.add('selected');
         const solutonData = [...solutionFields];
         const iterableData = solutonData.reduce((acc, item) => {
-            acc += item.value.trim();
+            acc += item.value.trim().split(' ').join('');
             return acc;
         }, '');
 
         if (!iterableData.length) {
             parentElem.classList.remove('selected');
         }
+
     });
 });
 
 // Функция генерации элементов списка услуг на основе массива данных  
-function renderPreview(serveseList) {
-    const resList = serveseList.reduce((acc, servese) => {
+function renderPreview(serviceList) {
+    const resList = serviceList.reduce((acc, service) => {
         const {
             selectName,
             selectTargetId,
@@ -181,7 +195,7 @@ function renderPreview(serveseList) {
             exampleLink,
             isPresent,
             optionCount
-        } = servese;
+        } = service;
         const optionCountStr = optionCount
             ?
             `<div class="list-item__block">
@@ -195,7 +209,7 @@ function renderPreview(serveseList) {
             `<a href="${exampleLink}" target="_blank" class="example-link">Демо</a>`
             :
             "";
-        const serviseItem = `
+        const serviceItem = `
         <li class="list-item" data-present="${isPresent}">
         <div class="list-item__head">
             <div class="list-item__block list-item__name">
@@ -214,10 +228,18 @@ function renderPreview(serveseList) {
             <p class="list-item__descr">${optionDescription || ""}</p>
         </div>
     </li>`;
-        return acc += serviseItem;
+        return acc += serviceItem;
     }, '');
 
     estimatePreview.innerHTML = resList;
+
+    if (serviceList.length > 0) {
+        culcResultArea.classList.add('show');
+    } else {
+        culcResultArea.classList.remove('show');
+    }
+
+    calculationResult(serviceList);
 }
 
 // Раскрытие описания услуги в списке услуг
@@ -233,18 +255,22 @@ function toggleDescr(e) {
 document.querySelectorAll('.togler input[type="checkbox"]').forEach(item => {
     item.addEventListener('change', (e) => {
         const togler = e.target;
-        const toglerParent = togler.closest('.styles-label');
+        const toglerParent = togler.closest('.styles-label, .solution');
         const select = toglerParent.querySelector('select');
+        let selectId = '';
         if (select) {
-            const selectId = select.getAttribute('data-select2-id');
-            estimateData.forEach(servise => {
-                if (servise.selectTargetId === selectId) {
-                    servise.isPresent = togler.checked;
-                }
-            });
-            renderPreview(estimateData);
+            selectId = select.getAttribute('data-select2-id');
         }
+        if (toglerParent.classList.contains('solution')) {
+            selectId = 'solutionArea';
+        }
+        estimateData.forEach(servise => {
+            if (servise.selectTargetId === selectId) {
+                servise.isPresent = togler.checked;
+            }
+        });
 
+        renderPreview(estimateData);
     });
 });
 
@@ -269,4 +295,69 @@ document.addEventListener('click', (e) => {
     resetSelect(e);
     toggleDescr(e);
     compliteCounterChanges(e);
+    addSolution(e);
 });
+
+
+function addSolution(e) {
+    const target = e.target;
+    if (!target.closest('[data-add-solution]')) return;
+    const solutionBlock = target.closest('.solution');
+    const solutionPrice = solutionBlock.querySelector('#solutionPrice').value
+        .split(' ')
+        .join('');
+
+    let solutionText = solutionBlock.querySelector('#solutionArea');
+    solutionText =
+        solutionText.value.substring(0, solutionText.selectionStart) +
+        "\n" +
+        solutionText.value.substring(solutionText.selectionEnd, solutionText.value.length);
+    solutionText = solutionText
+        .split("\n")
+        .filter(words => words.trim().length > 0)
+        .map(words => {
+            if (words.length > 0) {
+                return `${words}<br>`;
+            }
+        })
+        .join('');
+
+    if (solutionText.length < 1) return;
+
+    const isPresent = solutionBlock.querySelector('.togler input').checked;
+
+    const dataObj = {
+        selectName: 'Нестандартные решения',
+        selectTargetId: 'solutionArea',
+        optionId: null,
+        optionPrice: solutionPrice,
+        optionTitle: 'Реализация стороннего функционала',
+        optionDescription: solutionText,
+        exampleLink: null,
+        isPresent,
+        optionCount: null,
+    };
+    estimateData = estimateData.filter(item => item.selectTargetId !== 'solutionArea');
+    estimateData.push(dataObj);
+    renderPreview(estimateData);
+}
+
+
+function calculationResult(dataArr) {
+    const priceWidthoutSale = dataArr.reduce((acc, service) => {
+        return acc + Number(service.optionPrice);
+    }, 0);
+
+    const sale = dataArr.reduce((acc, service) => {
+        const isPresent = service.isPresent;
+        return isPresent ? acc + Number(service.optionPrice) : acc + 0;
+
+    }, 0);
+
+    const totalPrice = priceWidthoutSale - sale;
+
+    dataFieldPrice.innerHTML = priceWidthoutSale.toLocaleString('RU-ru');
+    dataFieldSale.innerHTML = sale.toLocaleString('RU-ru');
+    dataFieldTotalPrice.innerHTML = totalPrice.toLocaleString('RU-ru');
+
+}
