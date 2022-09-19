@@ -6,10 +6,18 @@ import callPrint from './print.js';
 baseFunction.testWebP();
 
 
-IMask(document.getElementById('solutionPrice'), {
-    mask: Number,
-    thousandsSeparator: ' '
-});
+// IMask(document.getElementById('solutionPrice'), {
+//     mask: Number,
+//     thousandsSeparator: ' '
+// });
+
+
+document.querySelectorAll('.number-mask').forEach(input => {
+    IMask(input, {
+        mask: Number,
+        thousandsSeparator: ' '
+    });
+})
 
 
 $('body').addClass('load');
@@ -72,7 +80,10 @@ $('.styles-label select').on('select2:select', function (e) {
     if (compliteCount) compliteCount.classList.remove('show');
 
     const isSelectWidthCounter = e.target.hasAttribute('data-has-counter');
-    let serviseValue = e.target.parentElement.querySelector('.styles-input input')?.value.trim();
+    let serviseValue = e.target.parentElement.querySelector('.styles-input input')?.value
+        .trim()
+        .split(' ')
+        .join('');
 
     if (isSelectWidthCounter && serviseValue.length < 1) return;
 
@@ -99,7 +110,10 @@ function compliteCounterChanges(e) {
     const selectTargetId = thisFieldSelect.getAttribute('data-select2-id');
     const selectName = thisFieldSelect.parentElement.querySelector('.select-placeholder').innerHTML;
     const isPresent = thisFieldSelect.parentElement.querySelector('.togler input').checked;
-    let serviseValue = thisFieldSelect.parentElement.querySelector('.styles-input input')?.value.trim();
+    let serviseValue = thisFieldSelect.parentElement.querySelector('.styles-input input')?.value
+        .trim()
+        .split(' ')
+        .join('');
     const optionCount = serviseValue ? serviseValue : null;
     addSelectedService({
         selectedOption,
