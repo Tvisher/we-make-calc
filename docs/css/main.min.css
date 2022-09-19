@@ -1650,6 +1650,55 @@ THEMES:
                                   not supported by any browser */
 }
 
+/* полоса прокрутки (скроллбар) */
+
+::-webkit-scrollbar {
+  width: 4px;
+  /* ширина для вертикального скролла */
+  height: 4px;
+  /* высота для горизонтального скролла */
+  background-color: #143861;
+  border-radius: 4px;
+}
+
+/* ползунок скроллбара */
+
+::-webkit-scrollbar-thumb {
+  background-color: #b5b5b5;
+  border-radius: 9em;
+  box-shadow: inset 1px 1px 10px #f3faf7;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #253861;
+}
+
+/* Стрелки */
+
+::-webkit-scrollbar-button:vertical:start:decrement {
+  background: linear-gradient(120deg, #02141a 40%, rgba(0, 0, 0, 0) 41%), linear-gradient(240deg, #02141a 40%, rgba(0, 0, 0, 0) 41%), linear-gradient(0deg, #02141a 30%, rgba(0, 0, 0, 0) 31%);
+  background-color: #f6f8f4;
+  display: none;
+}
+
+::-webkit-scrollbar-button:vertical:end:increment {
+  background: linear-gradient(300deg, #02141a 40%, rgba(0, 0, 0, 0) 41%), linear-gradient(60deg, #02141a 40%, rgba(0, 0, 0, 0) 41%), linear-gradient(180deg, #02141a 30%, rgba(0, 0, 0, 0) 31%);
+  background-color: #f6f8f4;
+  display: none;
+}
+
+::-webkit-scrollbar-button:horizontal:start:decrement {
+  background: linear-gradient(30deg, #02141a 40%, rgba(0, 0, 0, 0) 41%), linear-gradient(150deg, #02141a 40%, rgba(0, 0, 0, 0) 41%), linear-gradient(270deg, #02141a 30%, rgba(0, 0, 0, 0) 31%);
+  background-color: #f6f8f4;
+  display: none;
+}
+
+::-webkit-scrollbar-button:horizontal:end:increment {
+  background: linear-gradient(210deg, #02141a 40%, rgba(0, 0, 0, 0) 41%), linear-gradient(330deg, #02141a 40%, rgba(0, 0, 0, 0) 41%), linear-gradient(90deg, #02141a 30%, rgba(0, 0, 0, 0) 31%);
+  background-color: #f6f8f4;
+  display: none;
+}
+
 html {
   width: 100%;
   overflow-x: hidden;
@@ -2393,53 +2442,21 @@ input[type=number]:focus {
   text-decoration: line-through;
 }
 
-/* полоса прокрутки (скроллбар) */
-
-::-webkit-scrollbar {
-  width: 4px;
-  /* ширина для вертикального скролла */
-  height: 4px;
-  /* высота для горизонтального скролла */
-  background-color: #143861;
-  border-radius: 4px;
+.list-item[data-present=true] [data-is-present] {
+  display: flex;
+  align-items: center;
+  position: relative;
 }
 
-/* ползунок скроллбара */
-
-::-webkit-scrollbar-thumb {
-  background-color: #b5b5b5;
-  border-radius: 9em;
-  box-shadow: inset 1px 1px 10px #f3faf7;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: #253861;
-}
-
-/* Стрелки */
-
-::-webkit-scrollbar-button:vertical:start:decrement {
-  background: linear-gradient(120deg, #02141a 40%, rgba(0, 0, 0, 0) 41%), linear-gradient(240deg, #02141a 40%, rgba(0, 0, 0, 0) 41%), linear-gradient(0deg, #02141a 30%, rgba(0, 0, 0, 0) 31%);
-  background-color: #f6f8f4;
-  display: none;
-}
-
-::-webkit-scrollbar-button:vertical:end:increment {
-  background: linear-gradient(300deg, #02141a 40%, rgba(0, 0, 0, 0) 41%), linear-gradient(60deg, #02141a 40%, rgba(0, 0, 0, 0) 41%), linear-gradient(180deg, #02141a 30%, rgba(0, 0, 0, 0) 31%);
-  background-color: #f6f8f4;
-  display: none;
-}
-
-::-webkit-scrollbar-button:horizontal:start:decrement {
-  background: linear-gradient(30deg, #02141a 40%, rgba(0, 0, 0, 0) 41%), linear-gradient(150deg, #02141a 40%, rgba(0, 0, 0, 0) 41%), linear-gradient(270deg, #02141a 30%, rgba(0, 0, 0, 0) 31%);
-  background-color: #f6f8f4;
-  display: none;
-}
-
-::-webkit-scrollbar-button:horizontal:end:increment {
-  background: linear-gradient(210deg, #02141a 40%, rgba(0, 0, 0, 0) 41%), linear-gradient(330deg, #02141a 40%, rgba(0, 0, 0, 0) 41%), linear-gradient(90deg, #02141a 30%, rgba(0, 0, 0, 0) 31%);
-  background-color: #f6f8f4;
-  display: none;
+.list-item[data-present=true] [data-is-present]:after {
+  content: "";
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' clip-rule='evenodd' d='M3.7498 0.0334025C3.29402 0.0844963 2.84883 0.30209 2.51287 0.638059C1.91105 1.2399 1.74212 2.1494 2.0929 2.899C2.1448 3.00997 2.1873 3.10622 2.1873 3.11287C2.1873 3.11956 1.88549 3.125 1.51662 3.125C0.916553 3.125 0.827834 3.13175 0.674366 3.18918C0.447584 3.27403 0.212522 3.48928 0.102928 3.7124L0.0154282 3.89062L0.00583444 4.85937C-0.00372806 5.826 -0.00357182 5.82843 0.0699907 5.96709C0.120803 6.06287 0.186022 6.12843 0.279803 6.17803L0.415897 6.25H7.9998H15.5837L15.7198 6.17803C15.8136 6.12843 15.8788 6.06287 15.9296 5.96709C16.0032 5.82843 16.0033 5.826 15.9938 4.85937L15.9842 3.89062L15.8967 3.7124C15.7871 3.48928 15.552 3.27403 15.3252 3.18918C15.1718 3.13175 15.0831 3.125 14.483 3.125C14.1141 3.125 13.8123 3.1175 13.8123 3.10834C13.8123 3.09915 13.8459 3.02534 13.8869 2.94428C14.1958 2.33425 14.1367 1.543 13.7373 0.942215C13.0849 -0.0391913 11.7268 -0.277035 10.7923 0.426403C10.6625 0.52409 9.69683 1.38384 9.25762 1.79272L9.15605 1.88725L9.05449 1.79062C8.77665 1.52622 8.42168 1.39212 7.9998 1.39212C7.58221 1.39212 7.3209 1.48693 6.98999 1.75859L6.83952 1.88212L6.77124 1.82034C6.73368 1.78637 6.37949 1.46593 5.98418 1.10828C5.58887 0.750653 5.18312 0.404653 5.08249 0.339403C4.69621 0.088965 4.22327 -0.0196287 3.7498 0.0334025ZM4.42168 1.16353C4.51555 1.21162 4.94593 1.57687 5.4998 2.0785C6.33252 2.83268 6.42262 2.92381 6.43146 3.02078L6.44127 3.12812L5.10333 3.11781C3.89865 3.10856 3.75052 3.10184 3.61587 3.05043C3.39568 2.9664 3.15193 2.72893 3.0479 2.49712C2.96968 2.32281 2.96262 2.27812 2.97487 2.0349C2.99815 1.57196 3.2234 1.27568 3.68243 1.10418C3.86321 1.03662 4.23168 1.06622 4.42168 1.16353ZM12.4798 1.183C12.7256 1.304 12.9022 1.50334 12.9852 1.75322C13.0584 1.97353 13.0367 2.33818 12.939 2.53125C12.8392 2.72822 12.5924 2.95197 12.3807 3.03747C12.2065 3.10778 12.1762 3.1094 10.8826 3.11868L9.5623 3.12812L9.56252 3.025C9.56274 2.9355 9.5968 2.89128 9.82033 2.69037C9.96202 2.56303 10.3507 2.21147 10.6841 1.90912C11.0175 1.60675 11.3468 1.31775 11.4159 1.26684C11.7319 1.03422 12.1161 1.00393 12.4798 1.183ZM1.04493 7.3214C1.0364 7.34365 1.0333 9.11912 1.03805 11.2669L1.04668 15.1719L1.12902 15.3475C1.29577 15.7032 1.57033 15.9095 1.95499 15.9683C2.09724 15.99 2.99299 15.9985 4.5623 15.9929L6.95293 15.9844V11.6406V7.29687L4.00671 7.2889C1.61837 7.28243 1.05752 7.28859 1.04493 7.3214ZM9.04555 7.32015C9.03733 7.34172 9.03424 9.3 9.03865 11.6719L9.04668 15.9844L11.4373 15.9929C13.0066 15.9985 13.9024 15.99 14.0446 15.9683C14.4293 15.9095 14.7038 15.7032 14.8706 15.3475L14.9529 15.1719V11.2344V7.29687L12.0067 7.2889C9.66621 7.28256 9.0574 7.289 9.04555 7.32015Z' fill='%23FFAB00'/%3e%3c/svg%3e ");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 .complite-count {
@@ -2450,7 +2467,7 @@ input[type=number]:focus {
   position: absolute;
   bottom: 0;
   left: 50%;
-  transform: translate(-50%, 50%);
+  transform: translate(-50%, 50%) scale3d(1, 0, 0);
   width: 65px;
   height: 25px;
   background-color: #0463f1;
@@ -2463,6 +2480,7 @@ input[type=number]:focus {
 .complite-count.show {
   opacity: 1;
   visibility: visible;
+  transform: translate(-50%, 50%) scale3d(1, 1, 1);
 }
 
 @media screen and (max-width: 768px) {

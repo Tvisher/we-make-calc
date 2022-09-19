@@ -4,9 +4,14 @@ import './vendors/vendors.js';
 import callPrint from './print.js';
 baseFunction.testWebP();
 
+
 $('body').addClass('load');
 
+// Массив с данными по выбраным услугам
 var estimateData = [];
+
+// Поле отображения списка услуг
+const estimatePreview = document.querySelector('#estimatePreview');
 
 // Дописывание цены в опциях
 const selects = document.querySelectorAll('select');
@@ -34,7 +39,7 @@ convertFields.forEach(field => {
     });
 });
 
-// обьявление селектов
+// Обьявление селектов
 $('.styles-label select').select2({
     minimumResultsForSearch: -1,
     placeholder: "Выбор услуги",
@@ -46,23 +51,21 @@ $('.styles-label select').on('select2:select', function (e) {
 
     const selectedOption = e.params.data.element;
     const selectTargetId = e.target.getAttribute('data-select2-id');
-    const isPresent = e.target.parentElement.querySelector('.togler input').checked
+    const isPresent = e.target.parentElement.querySelector('.togler input').checked;
     const selectName = e.target.parentElement.querySelector('.select-placeholder').innerHTML;
     const selectedOptionId = selectedOption.getAttribute('data-select2-id');
     selectedOption.dataset.id = selectedOptionId;
 
     const compliteCount = e.target.parentElement.querySelector('.complite-count');
-    if (compliteCount) {
-        compliteCount.classList.remove('show');
-    }
+    if (compliteCount) compliteCount.classList.remove('show');
 
     const isSelectWidthCounter = e.target.hasAttribute('data-has-counter');
     let serviseValue = e.target.parentElement.querySelector('.styles-input input')?.value.trim();
 
-    if (isSelectWidthCounter && serviseValue.length < 1) {
-        return;
-    }
+    if (isSelectWidthCounter && serviseValue.length < 1) return;
+
     const optionCount = serviseValue ? serviseValue : null;
+
     addSelectedService({
         selectedOption,
         selectTargetId,
@@ -72,11 +75,35 @@ $('.styles-label select').on('select2:select', function (e) {
     });
 });
 
+// Обработка полей с возможностью ввести колличество услуги
+function compliteCounterChanges(e) {
+    const target = e.target;
+    if (!target.closest('.complite-count')) return;
 
+    const thisFieldSelect = e.target.closest('.styles-label').querySelector('select');
+    const jqSelect = $(thisFieldSelect).select2('data');
+    const selectedOption = jqSelect[0].element;
+
+    const selectTargetId = thisFieldSelect.getAttribute('data-select2-id');
+    const selectName = thisFieldSelect.parentElement.querySelector('.select-placeholder').innerHTML;
+    const isPresent = thisFieldSelect.parentElement.querySelector('.togler input').checked;
+    let serviseValue = thisFieldSelect.parentElement.querySelector('.styles-input input')?.value.trim();
+    const optionCount = serviseValue ? serviseValue : null;
+    addSelectedService({
+        selectedOption,
+        selectTargetId,
+        selectName,
+        isPresent,
+        optionCount
+    });
+    target.classList.remove('show');
+}
+
+// Добавить выбранную услугу в список услуг
 function addSelectedService(dataObj) {
     const { selectedOption, selectTargetId, selectName, isPresent, optionCount } = dataObj;
     const optionPrice = !optionCount ? selectedOption.value : selectedOption.value * optionCount;
-
+    // Формирование обьекта услуги
     const service = {
         selectName,
         selectTargetId,
@@ -87,12 +114,12 @@ function addSelectedService(dataObj) {
         exampleLink: selectedOption.dataset.exampleLink,
         isPresent,
         optionCount,
-    }
+    };
+
     estimateData = estimateData.filter(item => item.selectTargetId !== service.selectTargetId);
     estimateData.push(service);
     renderPreview(estimateData);
 }
-
 
 // Сброс выбора опции по конкретному селекту
 function resetSelect(e) {
@@ -107,8 +134,13 @@ function resetSelect(e) {
     const selectId = select.attr('data-select2-id');
     estimateData = estimateData.filter(item => item.selectTargetId !== selectId);
 
-    // Если есть поле вода, обнулить
+    // Если есть поле ввода, обнулить
     const numField = parentLabel.querySelector('.styles-label input[data-styles-field]');
+    const compliteCountBtn = parentLabel.querySelector('.complite-count');
+    if (compliteCountBtn) {
+        compliteCountBtn.classList.remove('show');
+    }
+
     if (numField) numField.value = '';
     // Обнулить поля кастомного решения
     if (parentLabel.classList.contains('solution')) {
@@ -117,7 +149,7 @@ function resetSelect(e) {
     renderPreview(estimateData);
 }
 
-
+// Описание отображения кнопки сброса полей в услуге нестандартных решений
 const solutionFields = document.querySelectorAll('#solutionArea, #solutionPrice');
 solutionFields.forEach(item => {
     item.addEventListener('input', (e) => {
@@ -136,9 +168,7 @@ solutionFields.forEach(item => {
     });
 });
 
-
-const estimatePreview = document.querySelector('#estimatePreview');
-
+// Функция генерации элементов списка услуг на основе массива данных  
 function renderPreview(serveseList) {
     const resList = serveseList.reduce((acc, servese) => {
         const {
@@ -190,23 +220,7 @@ function renderPreview(serveseList) {
     estimatePreview.innerHTML = resList;
 }
 
-
-// Прослушка клика по документу
-document.addEventListener('click', (e) => {
-    resetSelect(e);
-    toggleDescr(e);
-    compliteCounterChanges(e);
-});
-
-
-function compliteCounterChanges(e) {
-    const target = e.target;
-    if (!target.closest('.complite-count')) return;
-    const thisFieldSelect = e.target.closest('.styles-label').querySelector('select');
-    console.log(thisFieldSelect);
-}
-
-
+// Раскрытие описания услуги в списке услуг
 function toggleDescr(e) {
     const target = e.target;
     if (!target.closest('.show_more')) return;
@@ -215,22 +229,26 @@ function toggleDescr(e) {
     const toggleContent = parentElem.querySelector('.list-item__footer');
     $(toggleContent).slideToggle("slow");
 }
-
+// Включение/выключение скидки на выбранную услугу
 document.querySelectorAll('.togler input[type="checkbox"]').forEach(item => {
     item.addEventListener('change', (e) => {
         const togler = e.target;
         const toglerParent = togler.closest('.styles-label');
         const select = toglerParent.querySelector('select');
-        const selectId = select.getAttribute('data-select2-id');
-        estimateData.forEach(servise => {
-            if (servise.selectTargetId === selectId) {
-                servise.isPresent = togler.checked
-            }
-        });
-        renderPreview(estimateData);
+        if (select) {
+            const selectId = select.getAttribute('data-select2-id');
+            estimateData.forEach(servise => {
+                if (servise.selectTargetId === selectId) {
+                    servise.isPresent = togler.checked;
+                }
+            });
+            renderPreview(estimateData);
+        }
+
     });
 });
 
+// Реализация показа и скрытия кнопки подтверждения в поле указания колличествавыбранной услуги
 const counterFields = document.querySelectorAll('[data-counter-field]');
 counterFields.forEach(field => {
     field.addEventListener('input', (e) => {
@@ -238,11 +256,17 @@ counterFields.forEach(field => {
         const compliteBtn = e.target.parentElement.querySelector('.complite-count');
         const thisFieldSelect = e.target.closest('.styles-label').querySelector('select');
         const thisFieldSelectValue = thisFieldSelect.value;
-
         if (inputValue.length > 0 && thisFieldSelectValue) {
             compliteBtn.classList.add('show');
         } else {
             compliteBtn.classList.remove('show');
         }
     });
+});
+
+// Прослушка кликов по документу
+document.addEventListener('click', (e) => {
+    resetSelect(e);
+    toggleDescr(e);
+    compliteCounterChanges(e);
 });
