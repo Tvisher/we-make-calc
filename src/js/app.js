@@ -6,26 +6,25 @@ import callPrint from './print.js';
 baseFunction.testWebP();
 
 
-// IMask(document.getElementById('solutionPrice'), {
-//     mask: Number,
-//     thousandsSeparator: ' '
-// });
-
 
 document.querySelectorAll('.number-mask').forEach(input => {
     IMask(input, {
         mask: Number,
         thousandsSeparator: ' '
     });
-})
+});
+
+// Плавное появление контента при загрузке страницы
+window.addEventListener('load', (e) => $('body').addClass('load'));
 
 
-$('body').addClass('load');
-
+// HTML поля вывода данных
 const culcResultArea = document.querySelector('.calc-result');
 const dataFieldPrice = document.querySelector('[data-field-price]');
 const dataFieldSale = document.querySelector('[data-field-sale]');
 const dataFieldTotalPrice = document.querySelector('[data-field-total-price]');
+const calcOuterData = document.querySelector('.calc__outer-data');
+
 
 // Массив с данными по выбраным услугам
 var estimateData = [];
@@ -198,6 +197,9 @@ solutionFields.forEach(item => {
 
 // Функция генерации элементов списка услуг на основе массива данных  
 function renderPreview(serviceList) {
+    // Показать/Скрыть предпросмотр сметы
+    serviceList.length > 0 ? calcOuterData.classList.add('show') : calcOuterData.classList.remove('show')
+
     const resList = serviceList.reduce((acc, service) => {
         const {
             selectName,
@@ -244,15 +246,12 @@ function renderPreview(serviceList) {
     </li>`;
         return acc += serviceItem;
     }, '');
-
     estimatePreview.innerHTML = resList;
-
     if (serviceList.length > 0) {
         culcResultArea.classList.add('show');
     } else {
         culcResultArea.classList.remove('show');
     }
-
     calculationResult(serviceList);
 }
 
@@ -283,7 +282,6 @@ document.querySelectorAll('.togler input[type="checkbox"]').forEach(item => {
                 servise.isPresent = togler.checked;
             }
         });
-
         renderPreview(estimateData);
     });
 });
@@ -313,6 +311,7 @@ document.addEventListener('click', (e) => {
 });
 
 
+// Добавление нестандартного решения в список услуг
 function addSolution(e) {
     const target = e.target;
     if (!target.closest('[data-add-solution]')) return;
@@ -356,7 +355,7 @@ function addSolution(e) {
     renderPreview(estimateData);
 }
 
-
+// Вывод данных калькуляции в итоговую стоимость на странице расчёта
 function calculationResult(dataArr) {
     const priceWidthoutSale = dataArr.reduce((acc, service) => {
         return acc + Number(service.optionPrice);
@@ -373,5 +372,15 @@ function calculationResult(dataArr) {
     dataFieldPrice.innerHTML = priceWidthoutSale.toLocaleString('RU-ru');
     dataFieldSale.innerHTML = sale.toLocaleString('RU-ru');
     dataFieldTotalPrice.innerHTML = totalPrice.toLocaleString('RU-ru');
-
 }
+
+
+// отправка на печать готового результата расчёта
+// printBtn.addEventListener('click', (e) => {
+//     callPrint({
+//         estimateData,
+//     });
+// });
+window.addEventListener('beforeprint', (e) => {
+    callPrint(estimateData);
+});
