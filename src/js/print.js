@@ -7,13 +7,13 @@ export default function callPrint(estimateData) {
     const dataCompanyName = document.querySelector('[data-id="companyName"]');
     dataCompanyName.innerHTML = companyName.value;
 
-    const companySpecialization = document.querySelector('#companySpecialization');
-    const dataCompanySpecialization = document.querySelector('[data-id="companySpecialization"]');
-    dataCompanySpecialization.innerHTML = companySpecialization.value;
+    // const companySpecialization = document.querySelector('#companySpecialization');
+    // const dataCompanySpecialization = document.querySelector('[data-id="companySpecialization"]');
+    // dataCompanySpecialization.innerHTML = companySpecialization.value;
 
-    const companyCity = document.querySelector('#companyCity');
-    const dataCompanyCity = document.querySelector('[data-id="companyCity"]');
-    dataCompanyCity.innerHTML = companyCity.value;
+    // const companyCity = document.querySelector('#companyCity');
+    // const dataCompanyCity = document.querySelector('[data-id="companyCity"]');
+    // dataCompanyCity.innerHTML = companyCity.value;
 
     const companyDomain = document.querySelector('#companyDomain');
     const dataCompanyDomain = document.querySelector('[data-id="companyDomain"]');
@@ -60,8 +60,8 @@ export default function callPrint(estimateData) {
                 <span>${optionTitle}</span>
             </td>
             <td>${optionDescription}</td>
-            <td>${optionCount || 1}</td>
-            <td>${(+optionPrice).toLocaleString('ru-RU')} ₸</td>
+            <td class="center-text">${optionCount || 1}</td>
+            <td class="center-text">${(+optionPrice).toLocaleString('ru-RU')} ₸</td>
         </tr>`;
         row += calculationItem;
         return row;

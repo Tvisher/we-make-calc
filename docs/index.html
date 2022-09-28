@@ -26,15 +26,15 @@
                                 <span class="styles-text">Название компании</span>
                             </label>
 
-                            <label class="styles-input">
+                            <!-- <label class="styles-input">
                                 <input type="text" data-styles-field placeholder=" " id="companySpecialization">
                                 <span class="styles-text">Специализация компании</span>
-                            </label>
-
+                            </label> -->
+                            <!-- 
                             <label class="styles-input">
                                 <input type="text" data-styles-field placeholder=" " id="companyCity">
                                 <span class="styles-text">Город</span>
-                            </label>
+                            </label> -->
 
                             <label class="styles-input">
                                 <input type="text" data-styles-field placeholder=" " id="companyDomain">
@@ -364,47 +364,46 @@
         <section class="offer-doc print">
             <div class="container">
                 <div class="offer-doc__head">
-                    <div class="offer-doc__title">КОММЕРЧЕСКОЕ ПРЕДЛОЖЕНИЕ
-                        НА РАЗРАБОТКУ ИНТЕРНЕТ-МАГАЗИНА
+                    <div class="offer-doc__logo">
+                        <img src="img/logo.svg" alt="">
                     </div>
-                    <div class="offer-doc__logo"></div>
+                    <div class="offer-doc__company-data">
+                        <span>Натальчук Денис Валерьевич</span>
+                        <span>+7 (777) 541-09-00</span>
+                        <a href="mailto:natalchuk@wemake.kz" class="blue-tdu">natalchuk@wemake.kz</a>
+                    </div>
                 </div>
-                <div class="offer-doc__descr">Предлагаем Вам разработать стильный интернет-магазин на основе готового
-                    решения. Наша команда с опытом разработки более 8 лет разработает весь
-                    необходимый функционал полноценного интернет-магазина за короткий срок.
+                <div class="offer-doc__title">КОММЕРЧЕСКОЕ ПРЕДЛОЖЕНИЕ<br> НА РАЗРАБОТКУ ИНТЕРНЕТ-МАГАЗИНА
                 </div>
-
                 <div class="offer-doc__info-fields">
                     <div class="offer-doc__info-field">
+                        Дата составления КП:
+                        <span class="bold-text" data-id="currentDate">7 сентября 2022 года</span>
+                    </div>
+                    <div class="offer-doc__info-field">
                         Клиент:
-                        <span class="bold-text" data-id="companyName"></span>
-                    </div>
-                    <div class="offer-doc__info-field">
-                        Специализация компании:
-                        <span class="bold-text" data-id="companySpecialization"></span>
-                    </div>
-                    <div class="offer-doc__info-field">
-                        Город:
-                        <span class="bold-text" data-id="companyCity"></span>
+                        <span class="bold-text" data-id="companyName">Рога и Копыта</span>
                     </div>
                     <div class="offer-doc__info-field">
                         Доменное имя клиента:
                         <span class="bold-text" data-id="companyDomain">www.site.kz</span>
                     </div>
-                    <div class="offer-doc__info-field">
-                        Дата составления КП:
-                        <span class="bold-text" data-id="currentDate">7 сентября 2022 года</span>
-                    </div>
                 </div>
+
+                <div class="offer-doc__descr">Предлагаем Вам разработать стильный интернет-магазин на основе готового
+                    решения. Наша команда с опытом разработки более 8 лет разработает весь
+                    необходимый функционал полноценного интернет-магазина за короткий срок.
+                </div>
+
                 <span class="offer-title">Что будет реализовано:</span>
 
                 <table class="offer-doc__table">
                     <thead>
                         <tr>
-                            <th>Услуга</th>
-                            <th>Описание</th>
-                            <th>Кол-во </th>
-                            <th>Стоимость</th>
+                            <th style="width:30%;">Услуга</th>
+                            <th style="width:50%;">Описание</th>
+                            <th style="width:9%;">Кол-во </th>
+                            <th style="width:11%;">Стоимость</th>
                         </tr>
                     </thead>
                     <tbody data-render-rows></tbody>
