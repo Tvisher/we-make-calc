@@ -7,14 +7,6 @@ export default function callPrint(estimateData) {
     const dataCompanyName = document.querySelector('[data-id="companyName"]');
     dataCompanyName.innerHTML = companyName.value;
 
-    // const companySpecialization = document.querySelector('#companySpecialization');
-    // const dataCompanySpecialization = document.querySelector('[data-id="companySpecialization"]');
-    // dataCompanySpecialization.innerHTML = companySpecialization.value;
-
-    // const companyCity = document.querySelector('#companyCity');
-    // const dataCompanyCity = document.querySelector('[data-id="companyCity"]');
-    // dataCompanyCity.innerHTML = companyCity.value;
-
     const companyDomain = document.querySelector('#companyDomain');
     const dataCompanyDomain = document.querySelector('[data-id="companyDomain"]');
     dataCompanyDomain.innerHTML = companyDomain.value;
@@ -70,6 +62,26 @@ export default function callPrint(estimateData) {
     // Поле вывода строк таблицы расчёта
     const dataRenderRows = document.querySelector('[data-render-rows]');
     dataRenderRows.innerHTML = tableRows;
+
+
+    const ImplementationPeriod = document.querySelector('#implementationPeriod');
+    const dataImplementationPeriodField = document.querySelector('[data-implementation-period]');
+    dataImplementationPeriodField.innerHTML = ImplementationPeriod.value;
+
+    const dataTotalRes = document.querySelector('[data-total-res]');
+    const dataSaleRes = document.querySelector('[data-sale-res]');
+    const dataFinalRes = document.querySelector('[data-final-res]');
+
+    const totalRes = estimateData.reduce((acc, item) => {
+        return acc + +item.optionPrice;
+    }, 0);
+    dataTotalRes.innerHTML = totalRes.toLocaleString('RU-ru');
+
+    const saleRes = estimateData.reduce((acc, item) => {
+        return item.isPresent ? acc + +item.optionPrice : acc;
+    }, 0);
+    dataSaleRes.innerHTML = saleRes.toLocaleString('RU-ru');
+    dataFinalRes.innerHTML = (totalRes - saleRes).toLocaleString('RU-ru');
 
     // Печать документа
     window.print();
