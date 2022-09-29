@@ -2519,7 +2519,6 @@ input[type=number]:focus {
 
 .calc-result {
   margin-top: auto;
-  margin-bottom: 20px;
   opacity: 0;
   visibility: hidden;
   transition: all 0.4s ease-in-out;

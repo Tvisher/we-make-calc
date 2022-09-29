@@ -374,13 +374,13 @@ function calculationResult(dataArr) {
     dataFieldTotalPrice.innerHTML = totalPrice.toLocaleString('RU-ru');
 }
 
+const printBtn = document.querySelector('[data-print-offer]');
 
 // отправка на печать готового результата расчёта
-// printBtn.addEventListener('click', (e) => {
-//     callPrint({
-//         estimateData,
-//     });
-// });
+printBtn.addEventListener('click', (e) => {
+    callPrint(estimateData);
+
+});
 window.addEventListener('beforeprint', (e) => {
     callPrint(estimateData);
 });
