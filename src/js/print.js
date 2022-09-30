@@ -66,7 +66,7 @@ export default function callPrint(estimateData) {
 
     const ImplementationPeriod = document.querySelector('#implementationPeriod');
     const dataImplementationPeriodField = document.querySelector('[data-implementation-period]');
-    dataImplementationPeriodField.innerHTML = ImplementationPeriod.value;
+    dataImplementationPeriodField.innerHTML = `${ImplementationPeriod.value} рабочих дней`;
 
     const dataTotalRes = document.querySelector('[data-total-res]');
     const dataSaleRes = document.querySelector('[data-sale-res]');

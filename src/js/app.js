@@ -17,6 +17,8 @@ document.querySelectorAll('.number-mask').forEach(input => {
 // Плавное появление контента при загрузке страницы
 window.addEventListener('load', (e) => $('body').addClass('load'));
 
+const offerDocument = document.querySelector('#offer-doc');
+
 
 // HTML поля вывода данных
 const culcResultArea = document.querySelector('.calc-result');
@@ -378,9 +380,14 @@ const printBtn = document.querySelector('[data-print-offer]');
 
 // отправка на печать готового результата расчёта
 printBtn.addEventListener('click', (e) => {
+    offerDocument.classList.remove('no-print');
+    offerDocument.classList.add('print');
     callPrint(estimateData);
+    offerDocument.classList.remove('print');
+    offerDocument.classList.add('no-print');
+});
 
-});
-window.addEventListener('beforeprint', (e) => {
-    callPrint(estimateData);
-});
+
+// window.addEventListener('beforeprint', (e) => {
+//     callPrint(estimateData);
+// });
