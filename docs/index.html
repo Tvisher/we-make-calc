@@ -40,8 +40,8 @@
 
                             <h2 class="services-title">Услуги</h2>
 
-                            <label class="styles-label">
-                                <span class="select-placeholder">Подключение домена</span>
+                            <label class="styles-label" data-priority="0">
+                                <span class="select-placeholder">Регистрация домена</span>
                                 <select id="">
                                     <option value=""></option>
                                     <option data-description="Доменное имя - это название Вашего сайта в интернете. Например: www.wemake.kz. Регистрируется на клиента. Стоимость 3 360 тенге/год" value="3360">Домен на 1 год</option>
@@ -54,7 +54,7 @@
                                 </label>
                             </label>
 
-                            <label class="styles-label">
+                            <label class="styles-label" data-priority="1">
                                 <span class="select-placeholder">Подключение хостинга</span>
                                 <select id="">
                                     <option value=""></option>
@@ -68,7 +68,7 @@
                                 </label>
                             </label>
 
-                            <label class="styles-label">
+                            <label class="styles-label" data-priority="2">
                                 <span class="select-placeholder">Готовое решение</span>
                                 <select id="" data-currency-conversion="8">
                                     <option value=""></option>
@@ -95,7 +95,7 @@
                                 </label>
                             </label>
 
-                            <label class="styles-label">
+                            <label class="styles-label" data-priority="3">
                                 <span class="select-placeholder">Лицензия 1С-Битрикс</span>
                                 <select id="">
                                     <option value=""></option>
@@ -112,7 +112,7 @@
                                 </label>
                             </label>
 
-                            <label class="styles-label">
+                            <label class="styles-label" data-priority="4">
                                 <span class="select-placeholder">Тип внедрения</span>
                                 <select id="">
                                     <option value=""></option>
@@ -128,7 +128,7 @@
                                 </label>
                             </label>
 
-                            <label class="styles-label">
+                            <label class="styles-label" data-priority="5">
                                 <span class="select-placeholder">Синхронизация с Google Excel</span>
                                 <select id="">
                                     <option value=""></option>
@@ -143,7 +143,7 @@
                                 </label>
                             </label>
 
-                            <label class="styles-label">
+                            <label class="styles-label" data-priority="6">
                                 <span class="select-placeholder">Синхронизация с 1С</span>
                                 <select id="">
                                     <option value=""></option>
@@ -158,7 +158,7 @@
                                 </label>
                             </label>
 
-                            <label class="styles-label has-counter">
+                            <label class="styles-label has-counter" data-priority="7">
                                 <span class="select-placeholder">Сбор информации по товарам</span>
                                 <select id="" data-has-counter>
                                     <option value=""></option>
@@ -178,7 +178,7 @@
                                 </label>
                             </label>
 
-                            <label class="styles-label has-counter">
+                            <label class="styles-label has-counter" data-priority="8">
                                 <span class="select-placeholder">Уникальные текста на категории</span>
                                 <select id="" data-has-counter>
                                     <option value=""></option>
@@ -199,7 +199,7 @@
                                 </label>
                             </label>
 
-                            <label class="styles-label has-counter">
+                            <label class="styles-label has-counter" data-priority="9">
                                 <span class="select-placeholder">Уникальные текста на товары</span>
                                 <select id="" data-has-counter>
                                     <option value=""></option>
@@ -220,7 +220,7 @@
                                 </label>
                             </label>
 
-                            <label class="styles-label">
+                            <label class="styles-label" data-priority="10">
                                 <span class="select-placeholder">Установка счетчиков статистики</span>
                                 <select id="">
                                     <option value=""></option>
@@ -236,7 +236,7 @@
                                 </label>
                             </label>
 
-                            <label class="styles-label">
+                            <label class="styles-label" data-priority="11">
                                 <span class="select-placeholder">SEO оптимизация проекта</span>
                                 <select id="">
                                     <option value=""></option>
@@ -251,7 +251,7 @@
                                 </label>
                             </label>
 
-                            <label class="styles-label">
+                            <label class="styles-label" data-priority="12">
                                 <span class="select-placeholder">Доменная почта</span>
                                 <select id="">
                                     <option value=""></option>
@@ -265,7 +265,7 @@
                                 </label>
                             </label>
 
-                            <label class="styles-label">
+                            <label class="styles-label" data-priority="13">
                                 <span class="select-placeholder">Контекстная реклама</span>
                                 <select id="">
                                     <option value=""></option>
@@ -281,7 +281,7 @@
                                 </label>
                             </label>
 
-                            <label class="styles-label">
+                            <label class="styles-label" data-priority="14">
                                 <span class="select-placeholder">Подключение Online оплаты</span>
                                 <select id="">
                                     <option value=""></option>
@@ -296,7 +296,7 @@
                                 </label>
                             </label>
 
-                            <label class="styles-label">
+                            <label class="styles-label" data-priority="15">
                                 <span class="select-placeholder">Виджет Instagram</span>
                                 <select id="">
                                     <option value=""></option>
@@ -310,7 +310,7 @@
                                 </label>
                             </label>
 
-                            <div class="solution">
+                            <div class="solution" data-priority="16">
                                 <div class="wrap">
                                     <span class="solution-title">Нестандартные решения</span>
                                     <button class="reset-select"></button>
@@ -415,6 +415,109 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+        <section id="contract">
+            <div class="container">
+                <h2 class="contract__main-title">
+                    Договор № <span data-contract-number>__</span><br>
+                    на разработку интернет-магазина на основе готового решения
+                </h2>
+                <span class="contract__date" data-contract-date>27 августа 2021 года</span>
+                <p class="contract__info">
+                    <span data-contract-company>
+                        Товарищество с ограниченной ответственностью "Snab Partners"
+                    </span> именуемое далее «Заказчик», действующего на основании Устава, с одной стороны, и Индивидуальный предприниматель «Натальчук Денис Валерьевич», именуемое далее «Исполнитель», с другой стороны, заключили настоящий Договор о нижеследующем:
+                </p>
+                <h3 class="contract__clause">1. Предмет договора</h3>
+                <h4 class="contract__small-clause"><span class="point">1.1.</span> Исполнитель по поручению Заказчика принимает на себя обязанности по разработке интернет-магазина на основе готового решения для Заказчика, что является информационной услугой, а Заказчик обязан принять и оплатить данную работу.</h4>
+                <h4 class="contract__small-clause bold"><span class="point">1.2.</span> В услуги по разработке интернет-магазина на основе готового решения входит:</h4>
+                <h5 class="contract__inner-clause"><span class="point">1.2.1 </span>Покупка и регистрация лицензий и сервисов:</h5>
+                <ul class="dotted-list" data-full-payment-list>
+                    ...
+                </ul>
+                <h5 class="contract__inner-clause"><span class="point">1.2.2</span> Внедрение готового решения и настройка функционала:</h5>
+                <ul class="dotted-list" data-half-payment-list>
+                    ...
+                </ul>
+
+                <h3 class="contract__clause">2. Права и обязанности сторон</h3>
+                <h4 class="contract__small-clause bold"><span class="point">2.1.</span> Исполнитель обязуется:</h4>
+                <p style="padding-left: 35px; margin-bottom: 10px;">С момента вступления настоящего Договора в законную силу и при соблюдении Заказчиком условий, определяемых настоящим Договором, предоставить Заказчику истребованные им услуги.</p>
+                <h5 class="contract__inner-clause"><span class="point">2.1.1.</span> Оказывать услуги в соответствии с работами, указанными в пункте 1.2 данного договора.</h5>
+                <h5 class="contract__inner-clause"><span class="point">2.1.2.</span> Регистрировать все лицензии и сервисы на контакты заказчика</h5>
+                <h5 class="contract__inner-clause"><span class="point">2.1.3.</span> Предоставлять Заказчику промежуточные результаты работы для контроля за соблюдением сроков и качества выполненных работ.</h5>
+                <h5 class="contract__inner-clause"><span class="point">2.1.4.</span> При предоставлении исполнителем услуг по синхронизации интернет-магазина с Google таблицами предоставить инструкцию по наполнению Excel таблицы для импорта товаров на сайт</h5>
+                <h5 class="contract__inner-clause"><span class="point">2.1.5.</span> При предоставлении исполнителем услуг по синхронизации Instagram аккаунта клиента с сайтом предоставить инструкцию по получению API token Instagram</h5>
+                <h5 class="contract__inner-clause"><span class="point">2.1.6.</span> Осуществить доработку интернет-магазина в случае вынесения замечаний в результате </h5>
+                <h5 class="contract__inner-clause"><span class="point">2.1.7.</span> Передать выполненные работы Заказчику по окончании работ и полной оплате по электронной почте.</h5>
+
+                <h4 class="contract__small-clause bold"><span class="point">2.2.</span> Исполнитель имеет право:</h4>
+                <h5 class="contract__inner-clause"><span class="point">2.2.1.</span> Исполнитель имеет право сдать предусмотренные данным договором услуги досрочно.</h5>
+                <h5 class="contract__inner-clause"><span class="point">2.2.2.</span> Отказаться от исполнения Договора при выявлении информации, подлежащей размещению на Сайте или уже имеющейся на нем, противоречащей действующему законодательству РК. </h5>
+                <h5 class="contract__inner-clause"><span class="point">2.2.3. </span>Не приступать к работе, а начатую работу приостановить в случаях, когда нарушение или невыполнение Заказчиком своих обязательств по Договору препятствует оказанию услуг Исполнителю. Денежные средства Заказчику в этом случае не возвращаются.</h5>
+
+                <h4 class="contract__small-clause bold"><span class="point">2.3</span> Заказчик обязуется:</h4>
+                <h5 class="contract__inner-clause"><span class="point">2.3.1.</span> Представить в течение трех дней с момента подписания договора всю необходимую для размещения на сайте текстовую и графическую информацию.</h5>
+                <h5 class="contract__inner-clause"><span class="point">2.3.2.</span> При предоставлении исполнителем услуг по синхронизации интернет-магазина с 1С предоставить доступы к 1С</h5>
+                <h5 class="contract__inner-clause"><span class="point">2.3.3.</span> При предоставлении исполнителем услуг по синхронизации интернет-магазина с Google таблицами, наполнить Google таблицу товарами с описанием, изображением и характеристиками на основе инструкции от исполнителя</h5>
+                <h5 class="contract__inner-clause"><span class="point">2.3.4.</span> При предоставлении исполнителем услуг по синхронизации Instagram аккаунта клиента с сайтом, предоставить исполнителю API token аккаунта</h5>
+                <h5 class="contract__inner-clause"><span class="point">2.3.5.</span> При предоставлении исполнителем услуг по подключение Online оплат с сайта заключить договор с эквайринговой системой и предоставить доступы исполнителю к личному кабинету системы.</h5>
+                <h5 class="contract__inner-clause"><span class="point">2.3.6.</span> Принимать к рассмотрению представленную Исполнителем работу по электронной почте или в сети Интернет, и в течение 2 рабочих дней информировать Исполнителя о принятом решении.</h5>
+                <h5 class="contract__inner-clause"><span class="point">2.3.7.</span> Оплатить оказываемые ему услуги в порядке, который указан в п.4 настоящего Договора.</h5>
+                <h5 class="contract__inner-clause"><span class="point">2.3.8.</span> При выполнении работ раньше предусмотренного договором срока принять и оплатить их.</h5>
+
+                <h4 class="contract__small-clause bold"><span class="point">2.4</span> Заказчик имеет право:</h4>
+                <h5 class="contract__inner-clause"><span class="point">2.3.8.</span> При выполнении работ раньше предусмотренного договором срока принять и оплатить их.</h5>
+
+                <h3 class="contract__clause">3. Порядок выполнения и сдачи-приемки работ</h3>
+                <h4 class="contract__small-clause"><span class="point">3.1. </span>Исполнитель начинает выполнение работ по настоящему Договору в течение 3-х рабочих дней с даты получения предоплаты в соответствии с п.4.2. настоящего договора.</h4>
+                <h4 class="contract__small-clause"><span class="point">3.2.</span> Окончание работ по разработке интернет-магазина и дополнительного функционала через <span data-contract-period>30</span> рабочих дней после получения предоплаты, с правом досрочного выполнения.</h4>
+                <h4 class="contract__small-clause"><span class="point">3.3.</span> В случае несвоевременного предоставления запрашиваемой информации исполнителем от заказчика срок окончания сдвигается на срок ожидания информации</h4>
+                <h4 class="contract__small-clause"><span class="point">3.4.</span> В случае несвоевременного согласования работ заказчиком окончание работ сдвигается на срок ожидания согласования</h4>
+                <h4 class="contract__small-clause"><span class="point">3.5.</span> По завершении работ по настоящему Договору Исполнитель уведомляет Заказчика о выполненной работе, которую Заказчик утверждает в течение двух дней с момента его получения и производит окончательную оплату работ в соответствии с п.4.3. настоящего договора или дает мотивированный отказ от приемки работ.</h4>
+                <h4 class="contract__small-clause"><span class="point">3.6.</span> В случае мотивированного отказа Заказчика от приемки работ, сторонами вносится в пункт 1.2, необходимые доработки, стоимость и сроки их выполнения.</h4>
+
+                <h3 class="contract__clause">4. Стоимость и порядок оплаты работ</h3>
+                <h4 class="contract__small-clause"><span class="point">4.1. </span>Стоимость работ, поручаемых Исполнителю по настоящему Договору:</h4>
+                <ul data-work-performed-list>
+                    ...
+                </ul>
+                <h3 class="contract__small-clause">4.2. Оплата работ по разработке интернет-магазина осуществляется в следующем порядке:</h3>
+                <ul class="dotted-list">
+                    <li>100% оплата за лицензии и сервисы, указанные в п.1.2.1 данного договора в сумме: <span data-contract-full-payment>1 345 360 (один миллион триста сорок пять тысяч триста шестьдесят)</span> тенге в трёхдневный срок с момента подписания договора</li>
+                    <li>50% предоплата за внедрение готового решения и настройка функционала, указанные в п.1.2.2 данного договора в сумме: <span data-contract-half-payment>455 000 (четыреста пятьдесят пять тысяч)</span> тенге в трёхдневный срок с момента подписания договора</li>
+                    <li>50% доплата за внедрение готового решения и настройка функционала в сумме <span data-contract-half-payment>455 000 (четыреста пятьдесят пять тысяч)</span> тенге, после окончания работ в соответствии с пунктом 1.2 данного договора и полном выполнением исполнителем пункта 2.1 данного договора</li>
+                    <li>Общая сумма договора составляет <span data-contract-final-payment>1 800 360 (один миллион восемьсот тысяч триста шестьдесят)</span> тенге</li>
+                </ul>
+
+                <h3 class="contract__clause">5. Ответственность сторон. Разрешение споров</h3>
+                <h4 class="contract__small-clause"><span class="point">5.1.</span> За нарушения условий настоящего договора стороны несут ответственность в соответствии с действующим законодательством РК.</h4>
+                <h4 class="contract__small-clause"><span class="point">5.2.</span> Исполнитель не несет ответственности за нормальное функционирование Сети Интернет или ее частей, равно как и за их доступность для Заказчика, поскольку Интернет является добровольным объединением различных сетей и ресурсов.</h4>
+                <h4 class="contract__small-clause"><span class="point">5.3.</span> Ни одна из Сторон, ни при каких обстоятельствах не несет никакой ответственности перед другой Стороной за упущенную выгоду или любые другие косвенные потери или их последствия.</h4>
+                <h4 class="contract__small-clause"><span class="point">5.4.</span> Если в ходе выполнения своих обязательств по настоящему Договору одной из Сторон были получены сведения, являющиеся конфиденциальной информацией другой Стороны, то получившая такую информацию Сторона не вправе сообщать ее третьим лицам без согласия другой Стороны. К конфиденциальной информации Стороны относят информацию, переданную Заказчиком Исполнителю по акту приема-передачи конфиденциальной информации. Исполнитель вправе использовать указанную информацию исключительно в целях исполнения настоящего Договора, вправе предоставлять доступ к такой информации своим работникам. В случае необходимости предоставления указанной информации третьим лицам, Исполнитель должен получить на это письменное согласие Заказчика.</h4>
+                <h4 class="contract__small-clause"><span class="point">5.5. </span>Все споры, возникающие между Сторонами при исполнении настоящего Договора, разрешаются путем переговоров, а в случае невозможности достижения согласия между Сторонами спор передается на рассмотрение суд в соответствии с действующим законодательством Республики Казахстан. </h4>
+                <h4 class="contract__small-clause"><span class="point">5.6.</span> Исполнитель не несет ответственности за соответствие информационного содержимого Сайта действительности и действующему законодательству.</h4>
+                <h4 class="contract__small-clause"><span class="point">5.7.</span> За исключением форс-мажорных условий, за неисполнение Исполнителем своих обязательств, предусмотренные Договором, Заказчик без ущерба другим своим правам в рамках Договора вычитает от Общей стоимости Услуг в виде штрафа сумму в размере 0.1 % от Стоимости не оказанных в срок Услуг за каждый календарный день просрочки, но не более 10% от общей стоимости Услуг</h4>
+                <h4 class="contract__small-clause"><span class="point">5.8.</span> В случае необоснованной просрочки срока оплаты, Заказчик уплачивает Исполнителю пеню в размере 0,1% от неоплаченной суммы за каждый календарный день просрочки, но не более 10% от неоплаченной причитающейся суммы.</h4>
+
+                <h3 class="contract__clause">6. Форс-мажор</h3>
+                <h4 class="contract__small-clause"><span class="point">6.1.</span> При невозможности полного или частичного выполнения любой из Сторон обязательств по настоящему Договору вследствие обстоятельств форс-мажора, срок исполнения Договора продлевается на период времени, в течение которого будут действовать такие обстоятельства.</h4>
+                <h4 class="contract__small-clause"><span class="point">6.2.</span> Стороны освобождаются от ответственности за частичное или полное неисполнение обязательств по настоящему Договору, если ненадлежащее исполнение Сторонами обязанностей вызвано непреодолимой силой, т.е. чрезвычайными и непредотвратимыми обстоятельствами, не подлежащими разумному контролю.</h4>
+                <p>Под форс-мажорными обстоятельствами в работе провайдера услуг по хостингу сайта или форс-мажорными обстоятельствами в работе провайдера Интернет-услуг понимаются следующие обстоятельства:</p>
+                <ul class="dotted-list">
+                    <li>Выход по независящим от действий Заказчика и/или Исполнителя причинам из строя и/или временная частичная или полная неработоспособность сервера на территории провайдера услуг по хостингу, содержащего файлы или программное обеспечение для работы сайта, любых его аппаратных и программных компонентов и/или периферийного оборудования, обеспечивающих нормальную работоспособность сайта; </li>
+                    <li>Выход по независящим от действий Заказчика и/или Исполнителя причинам из строя и/или временная частичная или полная неработоспособность коммуникационных каналов, обеспечивающих связь между сервером на территории провайдера услуг по хостингу и любых других компьютеров в сети Интернет;</li>
+                </ul>
+
+                <h3 class="contract__clause">7. Прочие условия</h3>
+                <h4 class="contract__small-clause"><span class="point">7.1.</span> Исполнитель сохраняет за собой право размещать ссылку с указанием координат Исполнителя. Заказчик ни при каких условиях не имеет права удалять такие материалы, в том числе в результате переделок и модификаций сайта.</h4>
+                <h4 class="contract__small-clause"><span class="point">7.2.</span> Право собственности на разработанный сайт переходит к Заказчику в момент приемки выполненной работы и окончательной оплаты оказанных услуг согласно пункту 4.2 данного договора.</h4>
+                <h4 class="contract__small-clause"><span class="point">7.3.</span> Все изменения и дополнения к настоящему Договору действительны только в случае подписания их обеими сторонами. Договор вступает в силу с момента его подписания Сторонами и действует до момента сдачи акта выполненных работ исполнителем по настоящему Договору и завершения всех взаиморасчетов между Сторонами.</h4>
+                <h4 class="contract__small-clause"><span class="point">7.4.</span> Все Приложения, дополнения и изменения к настоящему Договору действительны в том случае, если они составлены в письменной форме и подписаны обеими Сторонами и являются его неотъемлемыми частями.</h4>
+                <h4 class="contract__small-clause"><span class="point">7.5.</span> Вопросы, не урегулированные настоящим Договором, регулируются действующим законодательством РК. </h4>
+                <h4 class="contract__small-clause"><span class="point">7.6.</span> Настоящий Договор составлен в 2-х экземплярах по одному для каждой из Сторон. Оба экземпляра имеют одинаковую юридическую силу. </h4>
+                <h4 class="contract__small-clause"><span class="point">7.7.</span> За сделки, совершаемые с использованием сайта, исполнитель ответственности не несёт.</h4>
             </div>
         </section>
     </main>

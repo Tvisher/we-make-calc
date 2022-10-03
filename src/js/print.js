@@ -11,7 +11,6 @@ export default function callPrint(estimateData) {
     const dataCompanyDomain = document.querySelector('[data-id="companyDomain"]');
     dataCompanyDomain.innerHTML = companyDomain.value;
 
-
     // Вывод актуальной даты составления КП
     const currentDateField = document.querySelector('[data-id="currentDate"]');
     let Data = new Date();
@@ -19,6 +18,7 @@ export default function callPrint(estimateData) {
     let Month = Data.getMonth();
     let Day = Data.getDate();
     let fMonth;
+
     // Преобразуем месяца
     switch (Month) {
         case 0: fMonth = "января"; break;
@@ -35,6 +35,7 @@ export default function callPrint(estimateData) {
         case 11: fMonth = "декабря"; break;
 
     }
+
     currentDateField.innerHTML = Day + " " + fMonth + " " + Year + " года";
 
     // Формирование списка услуг в строки таблицы
@@ -62,7 +63,6 @@ export default function callPrint(estimateData) {
     // Поле вывода строк таблицы расчёта
     const dataRenderRows = document.querySelector('[data-render-rows]');
     dataRenderRows.innerHTML = tableRows;
-
 
     const ImplementationPeriod = document.querySelector('#implementationPeriod');
     const dataImplementationPeriodField = document.querySelector('[data-implementation-period]');

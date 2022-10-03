@@ -5,8 +5,6 @@ import IMask from 'imask';
 import callPrint from './print.js';
 baseFunction.testWebP();
 
-
-
 document.querySelectorAll('.number-mask').forEach(input => {
     IMask(input, {
         mask: Number,
@@ -16,7 +14,6 @@ document.querySelectorAll('.number-mask').forEach(input => {
 
 // Плавное появление контента при загрузке страницы
 window.addEventListener('load', (e) => $('body').addClass('load'));
-
 const offerDocument = document.querySelector('#offer-doc');
 
 
@@ -69,19 +66,21 @@ $('.styles-label select').select2({
 // Событие выбора опции из селекта
 $('.styles-label select').on('select2:select', function (e) {
     $(this).parent('.styles-label').addClass('selected');
-
+    const target = e.target;
+    const servicePriority = target.closest('[data-priority]')?.getAttribute('data-priority');
+    // console.log(servicePriority);
     const selectedOption = e.params.data.element;
-    const selectTargetId = e.target.getAttribute('data-select2-id');
-    const isPresent = e.target.parentElement.querySelector('.togler input').checked;
-    const selectName = e.target.parentElement.querySelector('.select-placeholder').innerHTML;
+    const selectTargetId = target.getAttribute('data-select2-id');
+    const isPresent = target.parentElement.querySelector('.togler input').checked;
+    const selectName = target.parentElement.querySelector('.select-placeholder').innerHTML;
     const selectedOptionId = selectedOption.getAttribute('data-select2-id');
     selectedOption.dataset.id = selectedOptionId;
 
-    const compliteCount = e.target.parentElement.querySelector('.complite-count');
+    const compliteCount = target.parentElement.querySelector('.complite-count');
     if (compliteCount) compliteCount.classList.remove('show');
 
-    const isSelectWidthCounter = e.target.hasAttribute('data-has-counter');
-    let serviseValue = e.target.parentElement.querySelector('.styles-input input')?.value
+    const isSelectWidthCounter = target.hasAttribute('data-has-counter');
+    let serviseValue = target.parentElement.querySelector('.styles-input input')?.value
         .trim()
         .split(' ')
         .join('');
@@ -95,7 +94,8 @@ $('.styles-label select').on('select2:select', function (e) {
         selectTargetId,
         selectName,
         isPresent,
-        optionCount
+        optionCount,
+        servicePriority
     });
 });
 
@@ -103,7 +103,7 @@ $('.styles-label select').on('select2:select', function (e) {
 function compliteCounterChanges(e) {
     const target = e.target;
     if (!target.closest('.complite-count')) return;
-
+    const servicePriority = target.closest('[data-priority]')?.getAttribute('data-priority');
     const thisFieldSelect = e.target.closest('.styles-label').querySelector('select');
     const jqSelect = $(thisFieldSelect).select2('data');
     const selectedOption = jqSelect[0].element;
@@ -121,7 +121,8 @@ function compliteCounterChanges(e) {
         selectTargetId,
         selectName,
         isPresent,
-        optionCount
+        optionCount,
+        servicePriority
     });
     target.classList.remove('show');
 }
@@ -141,6 +142,7 @@ function addSelectedService(dataObj) {
         exampleLink: selectedOption.dataset.exampleLink,
         isPresent,
         optionCount,
+        servicePriority: dataObj.servicePriority
     };
 
     estimateData = estimateData.filter(item => item.selectTargetId !== service.selectTargetId);
@@ -201,7 +203,9 @@ solutionFields.forEach(item => {
 function renderPreview(serviceList) {
     // Показать/Скрыть предпросмотр сметы
     serviceList.length > 0 ? calcOuterData.classList.add('show') : calcOuterData.classList.remove('show')
-
+    serviceList = serviceList.sort((a, b) => {
+        return a.servicePriority - b.servicePriority;
+    });
     const resList = serviceList.reduce((acc, service) => {
         const {
             selectName,
@@ -212,7 +216,8 @@ function renderPreview(serviceList) {
             optionDescription,
             exampleLink,
             isPresent,
-            optionCount
+            optionCount,
+            servicePriority
         } = service;
         const optionCountStr = optionCount
             ?
@@ -317,10 +322,12 @@ document.addEventListener('click', (e) => {
 function addSolution(e) {
     const target = e.target;
     if (!target.closest('[data-add-solution]')) return;
+    const servicePriority = target.closest('[data-priority]')?.getAttribute('data-priority');
     const solutionBlock = target.closest('.solution');
     const solutionPrice = solutionBlock.querySelector('#solutionPrice').value
         .split(' ')
         .join('');
+    if (+solutionPrice.trim() < 1) solutionBlock.querySelector('.togler input').checked = true;
 
     let solutionText = solutionBlock.querySelector('#solutionArea');
     solutionText =
@@ -340,7 +347,6 @@ function addSolution(e) {
     if (solutionText.length < 1) return;
 
     const isPresent = solutionBlock.querySelector('.togler input').checked;
-
     const dataObj = {
         selectName: 'Нестандартные решения',
         selectTargetId: 'solutionArea',
@@ -351,6 +357,7 @@ function addSolution(e) {
         exampleLink: null,
         isPresent,
         optionCount: null,
+        servicePriority
     };
     estimateData = estimateData.filter(item => item.selectTargetId !== 'solutionArea');
     estimateData.push(dataObj);
