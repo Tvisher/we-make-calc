@@ -392,8 +392,8 @@ document.addEventListener('click', (e) => {
         contractDocument.classList.remove('no-print');
         contractDocument.classList.add('print');
         // offerPrint(estimateData);
-        contractDocument.classList.remove('print');
-        contractDocument.classList.add('no-print');
+        // contractDocument.classList.remove('print');
+        // contractDocument.classList.add('no-print');
     }
     // отправка на печать КП  
     if (target.closest('[data-print-offer]')) {

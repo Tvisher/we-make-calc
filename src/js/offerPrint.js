@@ -80,7 +80,7 @@ export default function offerPrint(estimateData) {
     const saleRes = estimateData.reduce((acc, item) => {
         return item.isPresent ? acc + +item.optionPrice : acc;
     }, 0);
-    dataSaleRes.innerHTML = saleRes.toLocaleString('RU-ru');
+    dataSaleRes.innerHTML = saleRes > 0 ? `Скидка:&nbsp;<span>${saleRes.toLocaleString('RU-ru')}</span>&nbsp;<span>₸</span>` : '';
     dataFinalRes.innerHTML = (totalRes - saleRes).toLocaleString('RU-ru');
 
     // Печать документа

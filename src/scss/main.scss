@@ -1104,11 +1104,15 @@ td {
 }
 
 #contract {
+  display: none;
   background-color: #fff;
   color: #000;
   padding: 20px 0;
   font-size: 12px;
   line-height: 120%;
+  &.print {
+    display: block;
+  }
 }
 .contract__main-title {
   margin-bottom: 20px;
