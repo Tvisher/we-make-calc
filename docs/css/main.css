@@ -2772,6 +2772,15 @@ td {
   font-weight: 500;
 }
 
+.btns-wrapper {
+  display: flex;
+  gap: 30px;
+}
+
+.btns-wrapper .btn {
+  margin-bottom: 0;
+}
+
 @media screen and (max-width: 768px) {
   .container {
     max-width: 98%;

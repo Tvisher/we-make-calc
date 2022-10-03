@@ -2,7 +2,7 @@
 import * as baseFunction from './modules/functions.js';
 import './vendors/vendors.js';
 import IMask from 'imask';
-import callPrint from './print.js';
+import offerPrint from './offerPrint.js';
 baseFunction.testWebP();
 
 document.querySelectorAll('.number-mask').forEach(input => {
@@ -15,6 +15,7 @@ document.querySelectorAll('.number-mask').forEach(input => {
 // Плавное появление контента при загрузке страницы
 window.addEventListener('load', (e) => $('body').addClass('load'));
 const offerDocument = document.querySelector('#offer-doc');
+const contractDocument = document.querySelector('#contract');
 
 
 // HTML поля вывода данных
@@ -309,13 +310,6 @@ counterFields.forEach(field => {
     });
 });
 
-// Прослушка кликов по документу
-document.addEventListener('click', (e) => {
-    resetSelect(e);
-    toggleDescr(e);
-    compliteCounterChanges(e);
-    addSolution(e);
-});
 
 
 // Добавление нестандартного решения в список услуг
@@ -383,18 +377,32 @@ function calculationResult(dataArr) {
     dataFieldTotalPrice.innerHTML = totalPrice.toLocaleString('RU-ru');
 }
 
-const printBtn = document.querySelector('[data-print-offer]');
 
-// отправка на печать готового результата расчёта
-printBtn.addEventListener('click', (e) => {
-    offerDocument.classList.remove('no-print');
-    offerDocument.classList.add('print');
-    callPrint(estimateData);
-    offerDocument.classList.remove('print');
-    offerDocument.classList.add('no-print');
+
+// Прослушка кликов по документу
+document.addEventListener('click', (e) => {
+    const target = e.target;
+    resetSelect(e);
+    toggleDescr(e);
+    compliteCounterChanges(e);
+    addSolution(e);
+
+    // отправка на печать договора 
+    if (target.closest('[data-print-contract]')) {
+        contractDocument.classList.remove('no-print');
+        contractDocument.classList.add('print');
+        // offerPrint(estimateData);
+        contractDocument.classList.remove('print');
+        contractDocument.classList.add('no-print');
+    }
+    // отправка на печать КП  
+    if (target.closest('[data-print-offer]')) {
+        offerDocument.classList.remove('no-print');
+        offerDocument.classList.add('print');
+        offerPrint(estimateData);
+        offerDocument.classList.remove('print');
+        offerDocument.classList.add('no-print');
+    }
 });
 
 
-// window.addEventListener('beforeprint', (e) => {
-//     callPrint(estimateData);
-// });

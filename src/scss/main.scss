@@ -1187,3 +1187,11 @@ td {
     }
   }
 }
+
+.btns-wrapper {
+  display: flex;
+  gap: 30px;
+  .btn {
+    margin-bottom: 0;
+  }
+}

@@ -1,7 +1,7 @@
 import sum_letters from './numTostring.js';
 
 
-export default function callPrint(estimateData) {
+export default function offerPrint(estimateData) {
 
     const companyName = document.querySelector('#companyName');
     const dataCompanyName = document.querySelector('[data-id="companyName"]');
@@ -64,9 +64,9 @@ export default function callPrint(estimateData) {
     const dataRenderRows = document.querySelector('[data-render-rows]');
     dataRenderRows.innerHTML = tableRows;
 
-    const ImplementationPeriod = document.querySelector('#implementationPeriod');
+    const implementationPeriod = document.querySelector('#implementationPeriod');
     const dataImplementationPeriodField = document.querySelector('[data-implementation-period]');
-    dataImplementationPeriodField.innerHTML = `${ImplementationPeriod.value} рабочих дней`;
+    dataImplementationPeriodField.innerHTML = `${implementationPeriod.value} рабочих дней`;
 
     const dataTotalRes = document.querySelector('[data-total-res]');
     const dataSaleRes = document.querySelector('[data-sale-res]');
