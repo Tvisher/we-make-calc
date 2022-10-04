@@ -5,6 +5,8 @@ import IMask from 'imask';
 import offerPrint from './offerPrint.js';
 baseFunction.testWebP();
 
+
+// маска на поля где нужно вводить только числа
 document.querySelectorAll('.number-mask').forEach(input => {
     IMask(input, {
         mask: Number,
@@ -14,8 +16,6 @@ document.querySelectorAll('.number-mask').forEach(input => {
 
 // Плавное появление контента при загрузке страницы
 window.addEventListener('load', (e) => $('body').addClass('load'));
-const offerDocument = document.querySelector('#offer-doc');
-const contractDocument = document.querySelector('#contract');
 
 
 // HTML поля вывода данных
@@ -24,6 +24,11 @@ const dataFieldPrice = document.querySelector('[data-field-price]');
 const dataFieldSale = document.querySelector('[data-field-sale]');
 const dataFieldTotalPrice = document.querySelector('[data-field-total-price]');
 const calcOuterData = document.querySelector('.calc__outer-data');
+
+const offerDocument = document.querySelector('#offer-doc');
+const contractDocument = document.querySelector('#contract');
+const requisitesModal = document.querySelector('#requisitesModal');
+
 
 
 // Массив с данными по выбраным услугам
@@ -389,12 +394,14 @@ document.addEventListener('click', (e) => {
 
     // отправка на печать договора 
     if (target.closest('[data-print-contract]')) {
-        contractDocument.classList.remove('no-print');
-        contractDocument.classList.add('print');
+        requisitesModal.classList.add('show');
+        // contractDocument.classList.remove('no-print');
+        // contractDocument.classList.add('print');
         // offerPrint(estimateData);
         // contractDocument.classList.remove('print');
         // contractDocument.classList.add('no-print');
     }
+
     // отправка на печать КП  
     if (target.closest('[data-print-offer]')) {
         offerDocument.classList.remove('no-print');

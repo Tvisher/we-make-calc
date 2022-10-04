@@ -468,7 +468,7 @@
                 <h5 class="contract__inner-clause"><span class="point">2.3.8.</span> При выполнении работ раньше предусмотренного договором срока принять и оплатить их.</h5>
 
                 <h4 class="contract__small-clause bold"><span class="point">2.4</span> Заказчик имеет право:</h4>
-                <h5 class="contract__inner-clause"><span class="point">2.3.8.</span> При выполнении работ раньше предусмотренного договором срока принять и оплатить их.</h5>
+                <h5 class="contract__inner-clause"><span class="point">2.4.1</span> Проверять ход и качество выполнения работ, не вмешиваясь в деятельность Исполнителя.</h5>
 
                 <h3 class="contract__clause">3. Порядок выполнения и сдачи-приемки работ</h3>
                 <h4 class="contract__small-clause"><span class="point">3.1. </span>Исполнитель начинает выполнение работ по настоящему Договору в течение 3-х рабочих дней с даты получения предоплаты в соответствии с п.4.2. настоящего договора.</h4>
@@ -483,7 +483,7 @@
                 <ul data-work-performed-list>
                     ...
                 </ul>
-                <h3 class="contract__small-clause">4.2. Оплата работ по разработке интернет-магазина осуществляется в следующем порядке:</h3>
+                <h3 class="contract__small-clause"><span class="point">4.2.</span> Оплата работ по разработке интернет-магазина осуществляется в следующем порядке:</h3>
                 <ul class="dotted-list">
                     <li>100% оплата за лицензии и сервисы, указанные в п.1.2.1 данного договора в сумме: <span data-contract-full-payment>1 345 360 (один миллион триста сорок пять тысяч триста шестьдесят)</span> тенге в трёхдневный срок с момента подписания договора</li>
                     <li>50% предоплата за внедрение готового решения и настройка функционала, указанные в п.1.2.2 данного договора в сумме: <span data-contract-half-payment>455 000 (четыреста пятьдесят пять тысяч)</span> тенге в трёхдневный срок с момента подписания договора</li>
@@ -523,13 +523,71 @@
                 <div class="requisites">
                     <div class="requisites__item">
                         <span class="bold-title">Исполнитель:</span>
+                        <span class="requisit-item">ИП «Натальчук Д.В.»</span>
+                        <span class="requisit-item">ИИН 870116300962</span>
+                        <span class="requisit-item">РК, ВКО, г. Усть-Каменогорск,</span>
+                        <span class="requisit-item">Пр. Ауэзова 28, офис 417 (ТК «Император»)</span>
+                        <span class="requisit-item">Тел. 8-777-541-09-00, 8 (7232) 208-909</span>
+                        <span class="requisit-item">АО «Народный банк Казахстана»</span>
+                        <span class="requisit-item">БИК HSBKKZKX</span>
+                        <span class="requisit-item">ИИК KZ396017151000006653</span>
                     </div>
                     <div class="requisites__item">
                         <span class="bold-title">Заказчик:</span>
+                        <span class="requisit-item">ИП «Натальчук Д.В.»</span>
+                        <span class="requisit-item">ИИН 870116300962</span>
+                        <span class="requisit-item">РК, ВКО, г. Усть-Каменогорск,</span>
+                        <span class="requisit-item">Пр. Ауэзова 28, офис 417 (ТК «Император»)</span>
+                        <span class="requisit-item">Тел. 8-777-541-09-00, 8 (7232) 208-909</span>
+                        <span class="requisit-item">АО «Народный банк Казахстана»</span>
+                        <span class="requisit-item">БИК HSBKKZKX</span>
+                        <span class="requisit-item">ИИК KZ396017151000006653</span>
+                    </div>
+                </div>
+                <span class="bold-title" style="margin-bottom: 10px;">Подписи Сторон:</span>
+                <div class="signatures-wrapper">
+                    <div class="signature-item">
+                        <span class="cursive-title" style="margin-bottom: 20px;">От Исполнителя:</span>
+                        <span class="cursive-title">Дата подписания договора</span>
+                        <span class="cursive-title" data-contract-date>«27» августа 2022 г.</span>
+                        <span class="signature" style="margin-top: 15px;"> _____________/Натальчук Д.В./ </span>
+                        <span style="font-size: 10px;">(подпись)</span>
+                    </div>
+                    <div class="signature-item">
+                        <span class="cursive-title" style="margin-bottom: 20px;">От Заказчика:</span>
+                        <span class="cursive-title">Дата подписания договора</span>
+                        <span class="cursive-title">«___» _____________ 2022 г.</span>
+                        <span class="signature" style="margin-top: 15px;"> _____________/<span style="display: inline;" data-director-nmae>Бугров Н.В.</span>/</span>
+                        <span style="font-size: 10px;">(подпись)</span>
                     </div>
                 </div>
             </div>
         </section>
+        <div class="requisites-modal" id="requisitesModal">
+            <div class="requisites-modal__content">
+                <button class="modal-close" onclick="this.closest('#requisitesModal').classList.remove('show')"></button>
+                <label class="modal-field">
+                    <span class="modal-field__text">Номер договора</span>
+                    <input type="text" placeholder="Пример: 12">
+                </label>
+                <label class="modal-field">
+                    <span class="modal-field__text">Имя директора для шапки договора</span>
+                    <input type="text" placeholder="Пример: в лице директора Иванова И.И.">
+                </label>
+                <label class="modal-field">
+                    <span class="modal-field__text">Имя директора для подписи договора</span>
+                    <input type="text" placeholder="Пример: Иванов И.И.">
+                </label>
+                <label class="modal-field">
+                    <span class="modal-field__text">Укажите реквизиты компании заказчика</span>
+                    <textarea class="modal-field__textarea" placeholder=""></textarea>
+                </label>
+                <div class="btns-wrapper">
+                    <button class="btn">Договор без реквизитов</button>
+                    <button class="btn">Договор с реквизитами</button>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer> </footer>
