@@ -597,19 +597,19 @@
                 <button class="modal-close" onclick="this.closest('#requisitesModal').classList.remove('show')"></button>
                 <label class="modal-field">
                     <span class="modal-field__text">Номер договора</span>
-                    <input type="text" placeholder="Пример: 12">
+                    <input type="text" placeholder="Пример: 12" id="contractNumber">
                 </label>
                 <label class="modal-field">
                     <span class="modal-field__text">Имя директора для шапки договора</span>
-                    <input type="text" placeholder="Пример: в лице директора Иванова И.И.">
+                    <input type="text" placeholder="Пример: в лице директора Иванова И.И." id="directorText">
                 </label>
                 <label class="modal-field">
                     <span class="modal-field__text">Имя директора для подписи договора</span>
-                    <input type="text" placeholder="Пример: Иванов И.И.">
+                    <input type="text" placeholder="Пример: Иванов И.И." id="directorName">
                 </label>
                 <label class="modal-field">
                     <span class="modal-field__text">Укажите реквизиты компании заказчика</span>
-                    <textarea class="modal-field__textarea" placeholder=""></textarea>
+                    <textarea class="modal-field__textarea" placeholder="" id="requisitesField"></textarea>
                 </label>
                 <div class="btns-wrapper">
                     <button class="btn" data-without-requisites>Договор без реквизитов</button>
