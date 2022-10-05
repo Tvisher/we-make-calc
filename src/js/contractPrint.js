@@ -10,7 +10,7 @@ export default function contractPrint(estimateData, withRequisites) {
     const implementationPeriod = document.querySelector('#implementationPeriod');
 
 
-
+    const dataContractCompany = document.querySelector('[data-contract-company]');
     const dataContractDate = document.querySelectorAll('[data-contract-date]');
     const dataFullPaymentList = document.querySelector('[data-full-payment-list]');
     const dataHalfPaymentList = document.querySelector('[data-half-payment-list]');
@@ -26,7 +26,6 @@ export default function contractPrint(estimateData, withRequisites) {
     const dataDirectorName = document.querySelector('[data-director-name]');
     const dataContractNumber = document.querySelector('[data-contract-number]');
 
-    const dataContractCompany = document.querySelector('[data-contract-company]');
 
     // Название компании заказчика
     dataContractCompany.innerHTML = `«${companyName.value}»`;
@@ -134,5 +133,3 @@ export default function contractPrint(estimateData, withRequisites) {
     contractDocument.classList.remove('print');
     contractDocument.classList.add('no-print');
 }
-
-
