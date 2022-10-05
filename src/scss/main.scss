@@ -1180,6 +1180,9 @@ td {
   margin: 10px 0;
   padding-left: 35px;
   list-style: square;
+  &.inner {
+    padding-left: 75px;
+  }
   li {
     list-style-type: disc;
     display: list-item;

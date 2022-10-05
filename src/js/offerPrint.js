@@ -1,4 +1,3 @@
-import sum_letters from './numTostring.js';
 
 
 export default function offerPrint(estimateData) {

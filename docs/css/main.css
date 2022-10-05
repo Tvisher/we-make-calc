@@ -2765,6 +2765,10 @@ td {
   list-style: square;
 }
 
+.dotted-list.inner {
+  padding-left: 75px;
+}
+
 .dotted-list li {
   list-style-type: disc;
   display: list-item;

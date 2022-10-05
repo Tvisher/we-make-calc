@@ -3,6 +3,7 @@ import * as baseFunction from './modules/functions.js';
 import './vendors/vendors.js';
 import IMask from 'imask';
 import offerPrint from './offerPrint.js';
+import contractPrint from './contractPrint.js';
 baseFunction.testWebP();
 
 
@@ -26,7 +27,6 @@ const dataFieldTotalPrice = document.querySelector('[data-field-total-price]');
 const calcOuterData = document.querySelector('.calc__outer-data');
 
 const offerDocument = document.querySelector('#offer-doc');
-const contractDocument = document.querySelector('#contract');
 const requisitesModal = document.querySelector('#requisitesModal');
 
 
@@ -74,13 +74,15 @@ $('.styles-label select').on('select2:select', function (e) {
     $(this).parent('.styles-label').addClass('selected');
     const target = e.target;
     const servicePriority = target.closest('[data-priority]')?.getAttribute('data-priority');
-    // console.log(servicePriority);
     const selectedOption = e.params.data.element;
     const selectTargetId = target.getAttribute('data-select2-id');
     const isPresent = target.parentElement.querySelector('.togler input').checked;
     const selectName = target.parentElement.querySelector('.select-placeholder').innerHTML;
     const selectedOptionId = selectedOption.getAttribute('data-select2-id');
     selectedOption.dataset.id = selectedOptionId;
+
+    const dataOneClause = selectedOption.getAttribute('data-one-clause');
+    const dataSecondClause = selectedOption.getAttribute('data-second-clause');
 
     const compliteCount = target.parentElement.querySelector('.complite-count');
     if (compliteCount) compliteCount.classList.remove('show');
@@ -101,7 +103,9 @@ $('.styles-label select').on('select2:select', function (e) {
         selectName,
         isPresent,
         optionCount,
-        servicePriority
+        servicePriority,
+        dataOneClause,
+        dataSecondClause
     });
 });
 
@@ -113,7 +117,8 @@ function compliteCounterChanges(e) {
     const thisFieldSelect = e.target.closest('.styles-label').querySelector('select');
     const jqSelect = $(thisFieldSelect).select2('data');
     const selectedOption = jqSelect[0].element;
-
+    const dataOneClause = selectedOption.getAttribute('data-one-clause');
+    const dataSecondClause = selectedOption.getAttribute('data-second-clause');
     const selectTargetId = thisFieldSelect.getAttribute('data-select2-id');
     const selectName = thisFieldSelect.parentElement.querySelector('.select-placeholder').innerHTML;
     const isPresent = thisFieldSelect.parentElement.querySelector('.togler input').checked;
@@ -128,14 +133,17 @@ function compliteCounterChanges(e) {
         selectName,
         isPresent,
         optionCount,
-        servicePriority
+        servicePriority,
+        dataOneClause,
+        dataSecondClause,
     });
     target.classList.remove('show');
 }
 
 // Добавить выбранную услугу в список услуг
 function addSelectedService(dataObj) {
-    const { selectedOption, selectTargetId, selectName, isPresent, optionCount } = dataObj;
+    const { selectedOption, selectTargetId, selectName, isPresent, optionCount, dataOneClause,
+        dataSecondClause } = dataObj;
     const optionPrice = !optionCount ? selectedOption.value : selectedOption.value * optionCount;
     // Формирование обьекта услуги
     const service = {
@@ -148,7 +156,9 @@ function addSelectedService(dataObj) {
         exampleLink: selectedOption.dataset.exampleLink,
         isPresent,
         optionCount,
-        servicePriority: dataObj.servicePriority
+        servicePriority: dataObj.servicePriority,
+        dataOneClause,
+        dataSecondClause
     };
 
     estimateData = estimateData.filter(item => item.selectTargetId !== service.selectTargetId);
@@ -254,7 +264,9 @@ function renderPreview(serviceList) {
         </div>
         <div class="list-item__footer">
             ${exampleLinkStr}
-            <p class="list-item__descr">${optionDescription || ""}</p>
+            <ul class="list-item__descr">
+             ${optionDescription || ""}
+            </ul>
         </div>
     </li>`;
         return acc += serviceItem;
@@ -316,7 +328,6 @@ counterFields.forEach(field => {
 });
 
 
-
 // Добавление нестандартного решения в список услуг
 function addSolution(e) {
     const target = e.target;
@@ -338,7 +349,7 @@ function addSolution(e) {
         .filter(words => words.trim().length > 0)
         .map(words => {
             if (words.length > 0) {
-                return `${words}<br>`;
+                return `<li>${words}</li>`;
             }
         })
         .join('');
@@ -356,7 +367,8 @@ function addSolution(e) {
         exampleLink: null,
         isPresent,
         optionCount: null,
-        servicePriority
+        servicePriority,
+        dataSecondClause: solutionText
     };
     estimateData = estimateData.filter(item => item.selectTargetId !== 'solutionArea');
     estimateData.push(dataObj);
@@ -383,7 +395,6 @@ function calculationResult(dataArr) {
 }
 
 
-
 // Прослушка кликов по документу
 document.addEventListener('click', (e) => {
     const target = e.target;
@@ -395,11 +406,13 @@ document.addEventListener('click', (e) => {
     // отправка на печать договора 
     if (target.closest('[data-print-contract]')) {
         requisitesModal.classList.add('show');
-        // contractDocument.classList.remove('no-print');
-        // contractDocument.classList.add('print');
-        // offerPrint(estimateData);
-        // contractDocument.classList.remove('print');
-        // contractDocument.classList.add('no-print');
+    }
+    if (target.closest('[data-with-requisites]')) {
+        contractPrint(estimateData, true);
+    }
+
+    if (target.closest('[data-without-requisites]')) {
+        contractPrint(estimateData, false);
     }
 
     // отправка на печать КП  
@@ -410,6 +423,8 @@ document.addEventListener('click', (e) => {
         offerDocument.classList.remove('print');
         offerDocument.classList.add('no-print');
     }
+
+
 });
 
 
