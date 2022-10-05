@@ -22,13 +22,7 @@ export default function contractPrint(estimateData, withRequisites) {
 
 
 
-    const dataClientRequisites = document.querySelector('[data-client-requisites]');
-    const dataDirectorName = document.querySelector('[data-director-name]');
-    const dataContractNumber = document.querySelector('[data-contract-number]');
-
-
     // Название компании заказчика
-    dataContractCompany.innerHTML = `«${companyName.value}»`;
     dataContractPeriod.innerHTML = implementationPeriod.value.trim();
     // Вывод актуальной даты составления КП
     function pad(n) {
@@ -99,7 +93,6 @@ export default function contractPrint(estimateData, withRequisites) {
 
 
 
-    // const workPerformedList = estimateData
 
 
     // Сумма работ по которым оплата 100%
@@ -124,6 +117,28 @@ export default function contractPrint(estimateData, withRequisites) {
     // Итоговая стоимость договора
     const contractFinalPayment = contractHalfPayment + contractFullPayment;
     dataContractFinalPayment.innerHTML = `${(+contractFinalPayment).toLocaleString('ru-RU')} (${sum_letters(+contractFinalPayment)})`;
+
+
+
+
+
+    if (withRequisites) {
+        const contractNumber = document.querySelector('#contractNumber');
+        const directorText = document.querySelector('#directorText');
+        const directorName = document.querySelector('#directorName');
+        const requisitesField = document.querySelector('#requisitesField');
+
+
+        const dataClientRequisites = document.querySelector('[data-client-requisites]');
+        const dataDirectorName = document.querySelector('[data-director-name]');
+        const dataContractNumber = document.querySelector('[data-contract-number]');
+
+
+
+    }
+
+    dataContractCompany.innerHTML = `«${companyName.value}»`;
+
 
 
     // Печать документа
