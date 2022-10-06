@@ -21,7 +21,6 @@ export default function contractPrint(estimateData, withRequisites) {
     const dataContractPeriod = document.querySelector('[data-contract-period]');
 
 
-
     // Название компании заказчика
     dataContractPeriod.innerHTML = implementationPeriod.value.trim();
     // Вывод актуальной даты составления КП
@@ -56,11 +55,12 @@ export default function contractPrint(estimateData, withRequisites) {
     // Список работ со 100% предоплатой
     const fullPaymentList = estimateData
         .map(item => {
-            if (item.dataOneClause && item.dataOneClause.includes('{SITENAME}')) {
+            let currentItem = Object.assign({}, item);
+            if (currentItem.dataOneClause && currentItem.dataOneClause.includes('{SITENAME}')) {
                 const companyDomainValue = companyDomain.value ? companyDomain.value : '';
-                item.dataOneClause = item.dataOneClause.replace('{SITENAME}', companyDomainValue);
+                currentItem.dataOneClause = currentItem.dataOneClause.replace('{SITENAME}', companyDomainValue);
             }
-            return item.dataOneClause;
+            return currentItem.dataOneClause;
         })
         .filter(item => item)
         .map(item => `<li>${item}</li>`)
@@ -70,10 +70,11 @@ export default function contractPrint(estimateData, withRequisites) {
     // Список работ со 50% предоплатой
     const halfPaymentList = estimateData
         .map(item => {
-            if (item.dataSecondClause && item.dataSecondClause.includes('{COUNTER}')) {
-                item.dataSecondClause = item.dataSecondClause.replace('{COUNTER}', item.optionCount);
+            let currentItem = Object.assign({}, item);
+            if (currentItem.dataSecondClause && currentItem.dataSecondClause.includes('{COUNTER}')) {
+                currentItem.dataSecondClause = currentItem.dataSecondClause.replace('{COUNTER}', currentItem.optionCount);
             }
-            return item.dataSecondClause;
+            return currentItem.dataSecondClause;
         })
         .filter(item => item)
         .reduce((acc, item) => {
@@ -90,9 +91,6 @@ export default function contractPrint(estimateData, withRequisites) {
         })
         .join('');
     dataHalfPaymentList.innerHTML = halfPaymentList;
-
-
-
 
 
     // Сумма работ по которым оплата 100%
@@ -117,6 +115,26 @@ export default function contractPrint(estimateData, withRequisites) {
     // Итоговая стоимость договора
     const contractFinalPayment = contractHalfPayment + contractFullPayment;
     dataContractFinalPayment.innerHTML = `${(+contractFinalPayment).toLocaleString('ru-RU')} (${sum_letters(+contractFinalPayment)})`;
+
+
+    // Список работ с услугми и ценами на пункт 4.1
+    const workPerformedList = estimateData
+        .filter(item => item.dataOneClause || item.dataFourthPoint
+        ).map(item => {
+            let currentItem = Object.assign({}, item);
+            if (currentItem.dataOneClause && currentItem.dataOneClause.includes('{SITENAME}')) {
+                const companyDomainValue = companyDomain.value ? companyDomain.value : '';
+                currentItem.dataOneClause = currentItem.dataOneClause.replace('{SITENAME}', companyDomainValue);
+            }
+            if (currentItem.dataFourthPoint && currentItem.dataFourthPoint.includes('{COUNTER}')) {
+                currentItem.dataFourthPoint = currentItem.dataFourthPoint.replace('{COUNTER}', currentItem.optionCount);
+            }
+            const itemPrice = !currentItem.isPresent ? currentItem.optionPrice : 0;
+            return `<li>${currentItem.dataOneClause || currentItem.dataFourthPoint} - ${(+itemPrice).toLocaleString('ru-RU')} тенге </li>`
+        }).join('');;
+
+    dataWorkPerformedList.innerHTML = workPerformedList;
+
 
 
 

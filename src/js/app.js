@@ -83,6 +83,8 @@ $('.styles-label select').on('select2:select', function (e) {
 
     const dataOneClause = selectedOption.getAttribute('data-one-clause');
     const dataSecondClause = selectedOption.getAttribute('data-second-clause');
+    const dataFourthPoint = selectedOption.getAttribute('data-fourth-point');
+
 
     const compliteCount = target.parentElement.querySelector('.complite-count');
     if (compliteCount) compliteCount.classList.remove('show');
@@ -105,7 +107,8 @@ $('.styles-label select').on('select2:select', function (e) {
         optionCount,
         servicePriority,
         dataOneClause,
-        dataSecondClause
+        dataSecondClause,
+        dataFourthPoint
     });
 });
 
@@ -119,6 +122,8 @@ function compliteCounterChanges(e) {
     const selectedOption = jqSelect[0].element;
     const dataOneClause = selectedOption.getAttribute('data-one-clause');
     const dataSecondClause = selectedOption.getAttribute('data-second-clause');
+    const dataFourthPoint = selectedOption.getAttribute('data-fourth-point');
+
     const selectTargetId = thisFieldSelect.getAttribute('data-select2-id');
     const selectName = thisFieldSelect.parentElement.querySelector('.select-placeholder').innerHTML;
     const isPresent = thisFieldSelect.parentElement.querySelector('.togler input').checked;
@@ -136,6 +141,7 @@ function compliteCounterChanges(e) {
         servicePriority,
         dataOneClause,
         dataSecondClause,
+        dataFourthPoint
     });
     target.classList.remove('show');
 }
@@ -143,7 +149,7 @@ function compliteCounterChanges(e) {
 // Добавить выбранную услугу в список услуг
 function addSelectedService(dataObj) {
     const { selectedOption, selectTargetId, selectName, isPresent, optionCount, dataOneClause,
-        dataSecondClause } = dataObj;
+        dataSecondClause, dataFourthPoint } = dataObj;
     const optionPrice = !optionCount ? selectedOption.value : selectedOption.value * optionCount;
     // Формирование обьекта услуги
     const service = {
@@ -158,7 +164,8 @@ function addSelectedService(dataObj) {
         optionCount,
         servicePriority: dataObj.servicePriority,
         dataOneClause,
-        dataSecondClause
+        dataSecondClause,
+        dataFourthPoint,
     };
 
     estimateData = estimateData.filter(item => item.selectTargetId !== service.selectTargetId);
@@ -368,7 +375,8 @@ function addSolution(e) {
         isPresent,
         optionCount: null,
         servicePriority,
-        dataSecondClause: solutionText
+        dataSecondClause: solutionText,
+        dataFourthPoint: 'Реализация стороннего функционала',
     };
     estimateData = estimateData.filter(item => item.selectTargetId !== 'solutionArea');
     estimateData.push(dataObj);
