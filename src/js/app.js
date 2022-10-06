@@ -413,6 +413,12 @@ document.addEventListener('click', (e) => {
 
     if (target.closest('[data-without-requisites]')) {
         contractPrint(estimateData, false);
+        const reqFieldsWithErrors = document.querySelectorAll('._req.error');
+        if (reqFieldsWithErrors.length > 0) {
+            reqFieldsWithErrors.forEach(item => {
+                item.classList.remove('error');
+            });
+        }
     }
 
     // отправка на печать КП  

@@ -166,6 +166,8 @@ export default function contractPrint(estimateData, withRequisites) {
         dataDirectorName.innerHTML = `_____________`;
     }
 
+
+    document.querySelector('#requisitesModal').classList.remove('show');
     // Печать документа
     contractDocument.classList.remove('no-print');
     contractDocument.classList.add('print');
