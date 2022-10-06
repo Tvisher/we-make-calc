@@ -2853,6 +2853,16 @@ td {
   justify-content: center;
 }
 
+.requisites-modal__content .btns-wrapper .ghost {
+  background-color: #17171a;
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+.requisites-modal__content .btns-wrapper .btn {
+  font-weight: 700;
+}
+
 .modal-field {
   margin-bottom: 20px;
 }
@@ -2865,6 +2875,12 @@ td {
   border-radius: 15px;
   background: #17171a;
   color: #fff;
+  border: 2px solid transparent;
+}
+
+.modal-field input.error,
+.modal-field .modal-field__textarea.error {
+  border-color: red;
 }
 
 .modal-field .modal-field__text {

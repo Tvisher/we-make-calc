@@ -423,8 +423,17 @@ document.addEventListener('click', (e) => {
         offerDocument.classList.remove('print');
         offerDocument.classList.add('no-print');
     }
-
-
 });
+
+
+const reqFields = document.querySelectorAll('._req');
+reqFields.forEach(field => {
+    field.addEventListener('focus', (e) => {
+        if (field.classList.contains) {
+            field.classList.remove('error');
+        }
+    });
+}
+)
 
 

@@ -1255,6 +1255,14 @@ td {
   .btns-wrapper {
     width: 100%;
     justify-content: center;
+    .ghost {
+      background-color: #17171a;
+      color: #fff;
+      border: 2px solid #fff;
+    }
+    .btn {
+      font-weight: 700;
+    }
   }
 }
 
@@ -1268,6 +1276,10 @@ td {
     border-radius: 15px;
     background: #17171a;
     color: #fff;
+    border: 2px solid transparent;
+    &.error {
+      border-color: red;
+    }
   }
   .modal-field__text {
     font-size: 14px;

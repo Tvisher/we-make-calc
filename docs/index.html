@@ -550,14 +550,16 @@
                 <div class="requisites">
                     <div class="requisites__item">
                         <span class="bold-title">Исполнитель:</span>
-                        <span class="requisit-item">ИП «Натальчук Д.В.»</span>
-                        <span class="requisit-item">ИИН 870116300962</span>
-                        <span class="requisit-item">РК, ВКО, г. Усть-Каменогорск,</span>
-                        <span class="requisit-item">Пр. Ауэзова 28, офис 417 (ТК «Император»)</span>
-                        <span class="requisit-item">Тел. 8-777-541-09-00, 8 (7232) 208-909</span>
-                        <span class="requisit-item">АО «Народный банк Казахстана»</span>
-                        <span class="requisit-item">БИК HSBKKZKX</span>
-                        <span class="requisit-item">ИИК KZ396017151000006653</span>
+                        <div class="client-requisites" data-our-requisites>
+                            <span class="requisit-item">ИП «Натальчук Д.В.»</span>
+                            <span class="requisit-item">ИИН 870116300962</span>
+                            <span class="requisit-item">РК, ВКО, г. Усть-Каменогорск,</span>
+                            <span class="requisit-item">Пр. Ауэзова 28, офис 417 (ТК «Император»)</span>
+                            <span class="requisit-item">Тел. 8-777-541-09-00, 8 (7232) 208-909</span>
+                            <span class="requisit-item">АО «Народный банк Казахстана»</span>
+                            <span class="requisit-item">БИК HSBKKZKX</span>
+                            <span class="requisit-item">ИИК KZ396017151000006653</span>
+                        </div>
                     </div>
                     <div class="requisites__item">
                         <span class="bold-title">Заказчик:</span>
@@ -597,7 +599,7 @@
                 <button class="modal-close" onclick="this.closest('#requisitesModal').classList.remove('show')"></button>
                 <label class="modal-field">
                     <span class="modal-field__text">Номер договора</span>
-                    <input type="text" placeholder="Пример: 12" id="contractNumber">
+                    <input class="_req" type="text" placeholder="Пример: 12" id="contractNumber">
                 </label>
                 <label class="modal-field">
                     <span class="modal-field__text">Имя директора для шапки договора</span>
@@ -605,14 +607,14 @@
                 </label>
                 <label class="modal-field">
                     <span class="modal-field__text">Имя директора для подписи договора</span>
-                    <input type="text" placeholder="Пример: Иванов И.И." id="directorName">
+                    <input class="_req" type="text" placeholder="Пример: Иванов И.И." id="directorName">
                 </label>
                 <label class="modal-field">
                     <span class="modal-field__text">Укажите реквизиты компании заказчика</span>
-                    <textarea class="modal-field__textarea" placeholder="" id="requisitesField"></textarea>
+                    <textarea class="modal-field__textarea _req" placeholder="" id="requisitesField"></textarea>
                 </label>
                 <div class="btns-wrapper">
-                    <button class="btn" data-without-requisites>Договор без реквизитов</button>
+                    <button class="btn ghost" data-without-requisites>Договор без реквизитов</button>
                     <button class="btn" data-with-requisites>Договор с реквизитами</button>
                 </div>
             </div>

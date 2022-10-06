@@ -120,26 +120,51 @@ export default function contractPrint(estimateData, withRequisites) {
 
 
 
-
+    // Переменные для полей ввода и вывода реквизитов 
+    const ourRequisites = document.querySelector('[data-our-requisites]').innerHTML;
+    const contractNumber = document.querySelector('#contractNumber');
+    const directorName = document.querySelector('#directorName');
+    const dataContractNumber = document.querySelector('[data-contract-number]');
+    const dataClientRequisites = document.querySelector('[data-client-requisites]');
+    const dataDirectorName = document.querySelector('[data-director-name]');
+    let directorText = document.querySelector('#directorText').value.trim();
+    directorText = directorText ? directorText + ',' : '';
 
     if (withRequisites) {
-        const contractNumber = document.querySelector('#contractNumber');
-        const directorText = document.querySelector('#directorText');
-        const directorName = document.querySelector('#directorName');
-        const requisitesField = document.querySelector('#requisitesField');
+        const reqFields = document.querySelectorAll('._req');
+        reqFields.forEach(field => {
+            if (field.value.trim().length < 1) {
+                field.classList.add('error');
+            }
+        });
+        if (document.querySelector('._req.error')) return;
 
 
-        const dataClientRequisites = document.querySelector('[data-client-requisites]');
-        const dataDirectorName = document.querySelector('[data-director-name]');
-        const dataContractNumber = document.querySelector('[data-contract-number]');
+        dataContractNumber.innerHTML = contractNumber.value;
+        dataDirectorName.innerHTML = directorName.value;
 
-
-
+        let requisitesField = document.querySelector('#requisitesField');
+        requisitesField =
+            requisitesField.value.substring(0, requisitesField.selectionStart) +
+            "\n" +
+            requisitesField.value.substring(requisitesField.selectionEnd, requisitesField.value.length);
+        requisitesField = requisitesField
+            .split("\n")
+            .filter(words => words.trim().length > 0)
+            .map(words => {
+                if (words.length > 0) {
+                    return `<span class="requisit-item">${words}</span>`;
+                }
+            })
+            .join('');
+        dataClientRequisites.innerHTML = requisitesField;
+        dataContractCompany.innerHTML = `«${companyName.value}», ${directorText}`;
+    } else {
+        dataClientRequisites.innerHTML = ourRequisites;
+        dataContractCompany.innerHTML = `«${companyName.value}»,`;
+        dataContractNumber.innerHTML = `__`;
+        dataDirectorName.innerHTML = `_____________`;
     }
-
-    dataContractCompany.innerHTML = `«${companyName.value}»`;
-
-
 
     // Печать документа
     contractDocument.classList.remove('no-print');
