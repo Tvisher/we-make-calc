@@ -546,7 +546,9 @@
                 <h4 class="contract__small-clause"><span class="point">7.6.</span> Настоящий Договор составлен в 2-х экземплярах по одному для каждой из Сторон. Оба экземпляра имеют одинаковую юридическую силу. </h4>
                 <h4 class="contract__small-clause"><span class="point">7.7.</span> За сделки, совершаемые с использованием сайта, исполнитель ответственности не несёт.</h4>
                 <h4 class="contract__small-clause"><span class="point">7.8.</span> Результаты Работ, оказываемых по настоящему Договору (далее «Результаты» или «Результаты Работ») не содержат объектов права интеллектуальной собственности, способных к правовой охране согласно положениям Применимого права. Все Результаты, произведенные Исполнителем, будут являться собственностью Заказчика, а изложенная в них информация – конфиденциальной информацией Заказчика.</h4>
-                <h4 class="contract__small-clause"><span class="point">7.9.</span>Договор считается заключенным после обмена электронными версиями подписанных документов по электронным адресам Сторон. Электронный адрес Стороны 1 ________. Электронный адрес Стороны 2 _______. Электронная версия Договора имеет силу до обмена Сторонами оригиналов Договора на бумажном носителе.</h4>
+                <h4 class="contract__small-clause"><span class="point">7.9.</span>
+                    <p>Договор считается заключенным после обмена электронными версиями подписанных документов по электронным адресам Сторон. Электронный адрес Стороны 1 (Исполнитель) - 208909@inbox.ru. Электронный адрес Стороны 2 (Заказчик) - <span style="display: inline;" data-client-email> ______________________ </span>. Электронная версия Договора имеет силу до обмена Сторонами оригиналов Договора на бумажном носителе.</p>
+                </h4>
                 <h3 class="contract__clause">8. Реквизиты Сторон</h3>
                 <div class="requisites">
                     <div class="requisites__item">
@@ -599,7 +601,7 @@
             <div class="requisites-modal__content">
                 <button class="modal-close" onclick="this.closest('#requisitesModal').classList.remove('show')"></button>
                 <label class="modal-field">
-                    <span class="modal-field__text">Номер договора</span>
+                    <span class="modal-field__text">Номер договора *</span>
                     <input class="_req" type="text" placeholder="Пример: 12" id="contractNumber">
                 </label>
                 <label class="modal-field">
@@ -607,11 +609,16 @@
                     <input type="text" placeholder="Пример: в лице директора Иванова И.И." id="directorText">
                 </label>
                 <label class="modal-field">
-                    <span class="modal-field__text">Имя директора для подписи договора</span>
+                    <span class="modal-field__text">Имя директора для подписи договора *</span>
                     <input class="_req" type="text" placeholder="Пример: Иванов И.И." id="directorName">
                 </label>
+
                 <label class="modal-field">
-                    <span class="modal-field__text">Укажите реквизиты компании заказчика</span>
+                    <span class="modal-field__text">Email адрес заказчика</span>
+                    <input class="" type="text" placeholder="Пример: 208909@inbox.ru" id="clientEmail">
+                </label>
+                <label class="modal-field">
+                    <span class="modal-field__text">Укажите реквизиты компании заказчика *</span>
                     <textarea class="modal-field__textarea _req" placeholder="" id="requisitesField"></textarea>
                 </label>
                 <div class="btns-wrapper">

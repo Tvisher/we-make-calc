@@ -21,6 +21,13 @@ export default function contractPrint(estimateData, withRequisites) {
     const dataContractPeriod = document.querySelector('[data-contract-period]');
 
 
+
+
+    const clientEmail = document.querySelector('#clientEmail').value.trim();
+    const dataClientEmail = document.querySelector('[data-client-email]');
+    dataClientEmail.innerHTML = clientEmail ? clientEmail : `______________________ `;
+
+
     // Название компании заказчика
     dataContractPeriod.innerHTML = implementationPeriod.value.trim();
     // Вывод актуальной даты составления КП
@@ -135,9 +142,6 @@ export default function contractPrint(estimateData, withRequisites) {
 
     dataWorkPerformedList.innerHTML = workPerformedList;
 
-
-
-
     // Переменные для полей ввода и вывода реквизитов 
     const ourRequisites = document.querySelector('[data-our-requisites]').innerHTML;
     const contractNumber = document.querySelector('#contractNumber');
@@ -183,7 +187,6 @@ export default function contractPrint(estimateData, withRequisites) {
         dataContractNumber.innerHTML = `__`;
         dataDirectorName.innerHTML = `_____________`;
     }
-
 
     document.querySelector('#requisitesModal').classList.remove('show');
     // Печать документа
