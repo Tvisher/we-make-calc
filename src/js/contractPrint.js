@@ -20,9 +20,7 @@ export default function contractPrint(estimateData, withRequisites) {
     const dataWorkPerformedList = document.querySelector('[data-work-performed-list]');
     const dataContractPeriod = document.querySelector('[data-contract-period]');
 
-
-
-
+    // Вставка эектнонной почты клиента
     const clientEmail = document.querySelector('#clientEmail').value.trim();
     const dataClientEmail = document.querySelector('[data-client-email]');
     dataClientEmail.innerHTML = clientEmail ? clientEmail : `______________________ `;
