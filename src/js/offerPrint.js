@@ -2,6 +2,7 @@
 
 export default function offerPrint(estimateData) {
 
+
     const companyName = document.querySelector('#companyName');
     const dataCompanyName = document.querySelector('[data-id="companyName"]');
     dataCompanyName.innerHTML = companyName.value;

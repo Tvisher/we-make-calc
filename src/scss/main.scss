@@ -736,7 +736,8 @@ input[type="number"]:focus {
   }
 }
 
-.styles-label {
+.styles-label,
+.styles-label-manager {
   position: relative;
   display: flex;
   align-items: center;

@@ -6,6 +6,30 @@ import offerPrint from './offerPrint.js';
 import contractPrint from './contractPrint.js';
 baseFunction.testWebP();
 
+const managers = [
+    {
+        "id": 0,
+        "text": "Натальчук Д.В.",
+        "fullName": "Натальчук Денис Валерьевич",
+        "email": "natalchuk@wemake.kz",
+        "phone": "+7 (777) 541-09-00"
+    },
+    {
+        "id": 1,
+        "text": "Есимжумартова Ж.Н.",
+        "fullName": "Есимжумартова Жауказын Нурбеккызы",
+        "email": "zhau@wemake.kz",
+        "phone": "+7 (707) 830-00-09"
+    }
+];
+
+const managersSelect = document.querySelector('#managers');
+managersSelect.innerHTML = '<option value=""></option>';
+managers.forEach(item => {
+    managersSelect.insertAdjacentHTML("afterbegin", `<option value="${item.id}">${item.text}</option>`)
+});
+
+
 
 function initApp() {
     // маска на поля где нужно вводить только числа
@@ -41,6 +65,7 @@ function initApp() {
     // Дописывание цены в опциях
     const selects = document.querySelectorAll('select');
     selects.forEach(select => {
+        if (select.id === 'managers') return;
         const fieldOptions = select.querySelectorAll('option');
         fieldOptions.forEach(item => {
             item.setAttribute('data-title', item.innerHTML);
@@ -70,6 +95,30 @@ function initApp() {
         placeholder: "Выбор услуги",
     });
 
+    // Обьявление селектов
+    $('.styles-label-manager select').select2({
+        minimumResultsForSearch: -1,
+        placeholder: "Выбор услуги",
+    });
+
+    const managerFullName = document.querySelector('.manager-full-name');
+    const managerPhone = document.querySelector('.manager-phone');
+    const managerEmail = document.querySelector('.manager-email');
+    const managerShortName = document.querySelector('.manager-short-name')
+
+
+
+    // Событие выбора опции из селекта
+    $('.styles-label-manager select').on('select2:select', function (e) {
+        $(this).parent('.styles-label-manager').addClass('selected');
+        const selectedOptionId = e.target.value;
+        const selectedManager = managers.find(item => item.id == selectedOptionId);
+        managerFullName.innerHTML = selectedManager.fullName;
+        managerPhone.innerHTML = selectedManager.phone;
+        managerEmail.innerHTML = selectedManager.email;
+        managerShortName.innerHTML = selectedManager.text;
+    });
+
     // Событие выбора опции из селекта
     $('.styles-label select').on('select2:select', function (e) {
         $(this).parent('.styles-label').addClass('selected');
@@ -77,7 +126,7 @@ function initApp() {
         const servicePriority = target.closest('[data-priority]')?.getAttribute('data-priority');
         const selectedOption = e.params.data.element;
         const selectTargetId = target.getAttribute('data-select2-id');
-        const isPresent = target.parentElement.querySelector('.togler input').checked;
+        const isPresent = target.parentElement.querySelector('.togler input')?.checked;
         const selectName = target.parentElement.querySelector('.select-placeholder').innerHTML;
         const selectedOptionId = selectedOption.getAttribute('data-select2-id');
         selectedOption.dataset.id = selectedOptionId;
@@ -454,7 +503,7 @@ function initApp() {
 
 
 
-const someString = 'zlM@~GzBW8h|';
+const someString = 'Voxel987=';
 const loginModal = document.querySelector('#login-modal');
 const loginBtn = document.querySelector('#loginBtn');
 
@@ -474,3 +523,4 @@ if (sessionStorage.getItem('loginTrue')) {
         }
     });
 }
+
